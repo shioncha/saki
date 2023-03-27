@@ -5,3 +5,84 @@ Author: mixne
 Description: A WordPress theme created by mixne.
 Version: 0.1
 */
+
+:root {
+    /* icons */
+    --bookmeter: #64BC4B;
+    --discord: #5865F2;
+    --facebook: #1877F2;
+    --feedly: #2BB24C;
+    --getpocket: #EF3F56;
+    --line: #00C300;
+    --mastodon: #3088D4;
+    --pocket: #EF3F56;
+    --qiita: #55C500;
+    --rss: #FFA500;
+    --twitter: #1DA1F2;
+    --youtube: #FF0000;
+    --other: #545454;
+    /* theme-color */
+    --main: #6CC9D4;
+    --sub: #57A3AC;
+    --gray: #9E9E9E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #F9F8FF;
+    font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+a {
+    color: var(--main);
+    font-size: .95rem;
+    text-decoration: none;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+}
+
+a:hover {
+    color: var(--gray);
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* Header */
+
+header {
+    background-color: #FFF;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 5px 0;
+}
+
+.title {
+    color: var(--main);
+    text-align: center;
+}
+
+.headerMenu {
+    overflow-x: auto;
+}
+
+.headerMenu::-webkit-scrollbar {
+    display: none;
+}
+
+.headerMenu ul {
+    display: flex;
+    width: 100%;
+}
+
+.headerMenu ul>li {
+    white-space: nowrap;
+    padding: 8px;
+    line-height: 1;
+}
