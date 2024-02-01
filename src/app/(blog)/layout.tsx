@@ -2,6 +2,7 @@ import { Metadata as NextMetadata } from "next";
 import Metadata from "@/const/meta"
 import "@/app/globals.css";
 import { Header } from "@/components/layouts/header";
+import { Footer } from "@/components/layouts/footer";
 
 export const metadata: NextMetadata = {
   title: {
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body>
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,0 +1,42 @@
+.footer {
+    background-color: #534F4F;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+    color: #fff;
+    margin: 0 auto;
+    margin-top: 24px;
+    padding: 16px 0;
+    text-align: center;
+    width: calc(100% - 14px);
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer a:hover {
+    color: #ccc;
+}
+
+.navigation ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0 auto;
+    width: fit-content;
+    justify-content: center;
+}
+
+.navigation ul li {
+    margin: .5rem 0 0;
+    width: 50%;
+}
+
+@media screen and (min-width: 480px) {
+    .navigation ul li {
+        width: fit-content;
+    }
+    .navigation ul li:not(:first-child) {
+        margin-left: .9rem;
+    }
+}
