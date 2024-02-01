@@ -1,0 +1,39 @@
+.container {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 96%;
+}
+
+.item {
+    background-color: var(--bg-main-color);
+    border-radius: 30px;
+    color: var(--text-color);
+    display: block;
+    padding: 0 24px 24px 24px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: var(--text-color);
+}
+
+.item h1 {
+    font-size: 1rem;
+    margin-top: .5rem;
+}
+
+.item p {
+    margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 480px) {
+    .container {
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 100%;
+        max-width: 1280px;
+    }
+}
