@@ -16,6 +16,11 @@ export type Blog = {
     eyecatch: MicroCMSImage;
 } & MicroCMSDate;
 
+export type Category = {
+    id: string;
+    name: string;
+} & MicroCMSDate;
+
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
     throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
