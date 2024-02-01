@@ -65,7 +65,7 @@ export default async function StaticDetailPage({
                 <h1>{post.title}</h1>
                 <div>{parse(post.content)}</div>
             </article>
-            <Aside content={post.content}/>
+            <Aside />
         </div>
     );
 }
