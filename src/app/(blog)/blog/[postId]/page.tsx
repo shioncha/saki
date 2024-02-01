@@ -10,6 +10,7 @@ import { ShareTree } from "@/components/layouts/share";
 import { Aside } from "@/components/layouts/aside";
 import { Thumbnail } from "@/components/elements/thumbnail";
 import styles from "./page.module.css";
+import Metadata from "@/const/meta";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -55,7 +56,7 @@ export default async function StaticDetailPage({
 
     return (
         <div className={styles.container}>
-            <ShareTree url={'https://mixne.net/blog/' + postId} title={post.title}/>
+            <ShareTree url={'https://' + Metadata.baseUrl + '/blog/' + postId} title={post.title + ' | ' + Metadata.title}/>
             <article className={styles.article}>
                 <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
                 <p>

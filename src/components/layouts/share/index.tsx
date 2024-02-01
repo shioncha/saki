@@ -3,7 +3,7 @@ import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon, Poc
 import { MisskeyShare } from "@/components/elements/misskey-share-button"
 import styles from "./share.module.css"
 
-export function ShareTree(props) {
+export function ShareTree(props: { url: string; title: string }) {
     return (
         <div className={styles.share0}>
             <div className={styles.share}>
@@ -12,7 +12,7 @@ export function ShareTree(props) {
                         <TwitterShareButton url={props.url} title={props.title}>
                             <TwitterIcon size={48} round={true} />
                         </TwitterShareButton>
-                        <FacebookShareButton url={props.url} quote={props.title}>
+                        <FacebookShareButton url={props.url}>
                             <FacebookIcon size={48} round={true} />
                         </FacebookShareButton>
                         <PocketShareButton url={props.url} title={props.title}>
