@@ -1,6 +1,7 @@
 import { Metadata as NextMetadata } from "next";
 import Metadata from "@/const/meta"
 import "@/app/globals.css";
+import { Header } from "@/components/layouts/header";
 
 export const metadata: NextMetadata = {
   title: {
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
+        <Header />
         <main>{children}</main>
       </body>
     </html>

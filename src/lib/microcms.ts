@@ -56,3 +56,16 @@ export const getDetail = async (
 
     return detailData;
 };
+
+// カテゴリー一覧を取得
+export const getCategoryList = async (queries?: MicroCMSQueries) => {
+    const listData = await client.getList<Category>({
+        endpoint: "categories",
+        queries: {
+            filters: 'id[not_equals]page',
+            limit: 10,
+        }
+    });
+
+    return listData;
+};
