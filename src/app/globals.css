@@ -1,4 +1,4 @@
-*:root {
+:root {
     --bg-color: #F5F9FF;
     --bg-main-color: #FFF;
     --logo-color: #6cc9d4;
@@ -11,14 +11,17 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
     font-family: "Heletica Neue", Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    min-height: 100vh;
 }
 
 * {
     box-sizing: border-box;
-    padding: 0;
     line-height: 1.5;
     margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -53,9 +56,9 @@ a:hover {
 }
 
 img {
-    max-width: 100%;
-    height: auto;
     border-radius: 6px;
+    height: auto;
+    max-width: 100%;
     vertical-align: top;
 }
 
