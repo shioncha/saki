@@ -10,6 +10,7 @@
 .item {
     background-color: var(--bg-main-color);
     border-radius: 30px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     color: var(--text-color);
     display: block;
     padding: 0 24px 24px 24px;

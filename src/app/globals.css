@@ -13,7 +13,7 @@
         --bg-color: #222;
         --bg-main-color: #333;
         --logo-color: #6cc9d4;
-        --main-color: #56a0a8;
+        --main-color: #6cc9d4;
         --text-color: #eee;
         --text-sub-color: #a8adad;
         --decoration-color: #222;
@@ -27,6 +27,10 @@ body {
     flex-direction: column;
     font-family: "Heletica Neue", Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
     min-height: 100vh;
+}
+
+main {
+    margin-bottom: auto;
 }
 
 * {
