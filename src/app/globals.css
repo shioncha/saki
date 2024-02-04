@@ -8,6 +8,18 @@
     --decoration-color: #f1eff7;
 }
 
+@media (prefers-color-scheme: dark) {
+     :root {
+        --bg-color: #222;
+        --bg-main-color: #333;
+        --logo-color: #6cc9d4;
+        --main-color: #56a0a8;
+        --text-color: #eee;
+        --text-sub-color: #a8adad;
+        --decoration-color: #222;
+    }
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -92,7 +104,7 @@ td p {
 }
 
 td {
-    background-color: #FFF;
+    background-color: var(--bg-main-color);
 }
 
 table tr:last-child td:first-child {
