@@ -16,7 +16,7 @@ export function MisskeyShare({
     const link = `https://misskey.io/share?text=[${title}](${url})`;
 
     return (
-        <Link href={link}>
+        <Link href={link} target="_blank" rel="noopener noreferrer">
             <div className={styles.icon}>
                 <SiMisskey color='white' size={24}/>
             </div>
