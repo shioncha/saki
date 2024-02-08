@@ -44,7 +44,7 @@ export const getList = async (queries?: MicroCMSQueries) => {
             limit: 10,
         }
     });
-
+    
     return listData;
 };
 
@@ -72,5 +72,21 @@ export const getCategoryList = async (queries?: MicroCMSQueries) => {
         }
     });
 
+    return listData;
+};
+
+// カテゴリーごとに記事を取得
+export const getCategoryDetail = async (
+    categoryId: string,
+    queries?: MicroCMSQueries
+) => {
+    const listData = await client.getList<Blog>({
+        endpoint: "blogs",
+        queries: {
+            filters: 'category[not_equals]page[and]category[equals]' + categoryId,
+            limit: 10,
+        }
+    });
+    
     return listData;
 };
