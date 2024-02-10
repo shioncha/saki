@@ -32,7 +32,7 @@
 }
 
 .icon {
-    background-color: #FFF;
+    background-color: var(--bg-main-color);
     border-radius: 50%;
     width: 48px;
     height: 48px;
