@@ -1,17 +1,17 @@
 import { Feed } from 'feed';
 import { getBlogList } from '@/lib/microcms';
+import Metadata from '@/const/meta';
 
 export const generateRssFeed = async (): Promise<string> => {
     // フィードを生成
-    const baseUrl ='localhost:3000'
     const feed = new Feed({
-        title: 'mixne-dev',
-        description: 'ガジェットやテックを中心に、しおんの思ったこと・感じたこと',
-        id:baseUrl,
-        link:baseUrl,
+        title: Metadata.title,
+        description: Metadata.description,
+        id: Metadata.baseUrl,
+        link: Metadata.baseUrl,
         language: 'ja',
         copyright: '© 2024 mixne',
-        generator:baseUrl,
+        generator: Metadata.baseUrl,
     });
 
     // ブログ一覧を取得
@@ -25,8 +25,8 @@ export const generateRssFeed = async (): Promise<string> => {
             content: post.content,
             image: post.eyecatch?.url,
             date: new Date(post.createdAt),
-            id: `${baseUrl}/blog/${post.id}`,
-            link: `${baseUrl}/blog/${post.id}`,
+            id: `${Metadata.baseUrl}/blog/${post.id}`,
+            link: `${Metadata.baseUrl}/blog/${post.id}`,
         });
     });
 
