@@ -62,22 +62,22 @@ export default async function StaticDetailPage({
                 <span className={styles.icon}><AiTwotoneFolderOpen /></span>
                 <span className={styles.headerTitle}>「{getCategoryName(categoryId)}」の記事一覧</span>
             </div>
-            <ul className={styles.container}>
+            <div className={styles.container}>
             {contents.map((post) => {
-                return (
-                    <li key={post.id} className={styles.item}>
-                        <Link href={`/blog/${post.id}`}>
-                            <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
-                            <p>
-                                <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
-                                <span className={styles.category}>{post.category.name}</span>
-                            </p>
-                            <h1 className={styles.title}>{post.title}</h1>
-                        </Link>
-                    </li>
+            return (
+                <article key={post.id}>
+                    <Link href={`/blog/${post.id}`} className={styles.item}>
+                    <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
+                    <p>
+                        <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
+                        <span className={styles.category}><Link href={`/category/${post.category.id}`}>{post.category.name}</Link></span>
+                    </p>
+                    <h1 className={styles.title}>{post.title}</h1>
+                    </Link>
+                </article>
                 );
             })}
-            </ul>
+            </div>
         </>
     );
 }
