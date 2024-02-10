@@ -90,3 +90,15 @@ export const getCategoryDetail = async (
     
     return listData;
 };
+
+// ブログ一覧を取得（RSS用）
+export const getBlogList = async (queries?: MicroCMSQueries) => {
+    const listData = await client.getAllContents<Blog>({
+        endpoint: "blogs",
+        queries: {
+            filters: 'category[not_equals]page',
+        }
+    });
+
+    return listData;
+};
