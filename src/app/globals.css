@@ -1,6 +1,7 @@
 :root {
     --bg-color: #F5F9FF;
     --bg-main-color: #FFF;
+    --bg-hover-color: #fafafa;
     --logo-color: #6cc9d4;
     --main-color: #56a0a8;
     --text-color: #444;
@@ -12,6 +13,7 @@
      :root {
         --bg-color: #222;
         --bg-main-color: #333;
+        --bg-hover-color: #444;
         --logo-color: #6cc9d4;
         --main-color: #6cc9d4;
         --text-color: #eee;
@@ -49,7 +51,7 @@ h2 {
     border-bottom: 1px solid #eee;
     font-size: 1.4rem;
     font-weight: bold;
-    margin-top: 2.3rem;
+    margin-top: 3rem;
 }
 
 h3 {
@@ -71,6 +73,12 @@ a:hover {
     color: #b1d3d6;
 }
 
+hr {
+    border: none;
+    border-top: 1px solid var(--decoration-color);
+    margin: 3rem 0;
+}
+
 img {
     border-radius: 6px;
     height: auto;
@@ -81,6 +89,7 @@ img {
 figure {
     display: flex;
     flex-direction: column;
+    margin: 1rem 0 0 0;
 }
 
 figcaption {
@@ -91,14 +100,14 @@ figcaption {
 
 ul,
 ol {
-    margin: 1.4rem 0;
-    margin-left: 1.5rem;
+    margin: 1.4rem 0 0 2rem;
 }
 
 table {
     background-color: var(--decoration-color);
     border: 1px solid var(--decoration-color);
     border-radius: 10px;
+    margin: 1rem 0 0 0;
 }
 
 th p,

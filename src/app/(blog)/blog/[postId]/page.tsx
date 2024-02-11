@@ -60,8 +60,8 @@ export default async function StaticDetailPage({
             <article className={styles.article}>
                 <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
                 <p>
-                    <span>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
-                    <span><Link href={'/category/' + post.category.id}>{post.category.name}</Link></span>
+                    <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
+                    <span className={styles.category}><Link href={'/category/' + post.category.id}>{post.category.name}</Link></span>
                 </p>
                 <h1>{post.title}</h1>
                 <div>{parse(post.content)}</div>

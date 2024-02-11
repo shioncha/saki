@@ -12,6 +12,5 @@
     display: flex;
     width: 96%;
     max-width: 780px;
-    margin: 0 auto;
-    margin-top: 24px;
+    margin: 30px auto 0;
 }

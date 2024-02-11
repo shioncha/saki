@@ -12,7 +12,7 @@
 .shareInner {
     background-color: var(--bg-main-color);
     border-radius: 30px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 100px;
     margin-top: 100px;
@@ -21,4 +21,10 @@
 .buttons {
     padding: 10px 0;
     text-align: center;
+}
+
+@media screen and (max-width: 1300px) {
+    .share {
+        display: none;
+    }
 }

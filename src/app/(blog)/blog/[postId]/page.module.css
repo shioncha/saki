@@ -1,7 +1,7 @@
 .article {
     background-color: var(--bg-main-color);
     border-radius: 24px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     line-height: 1.7;
     max-width: 96%;
@@ -18,7 +18,7 @@
 .container {
     display: flex;
     max-width: 1180px;
-    margin: 24px auto 0;
+    margin: 30px auto 0;
 }
 
 .date {
@@ -39,5 +39,8 @@
     .article {
         margin: 0;
         max-width: calc(100% - 330px);
+    }
+    .container {
+        padding: 0 40px;
     }
 }
