@@ -1,6 +1,7 @@
 import { Feed } from 'feed';
 import { getBlogList } from '@/lib/microcms';
 import Metadata from '@/const/meta';
+import { MicroCMSQueries } from 'microcms-js-sdk';
 
 export const generateRssFeed = async (): Promise<string> => {
     // フィードを生成
@@ -15,7 +16,10 @@ export const generateRssFeed = async (): Promise<string> => {
     });
 
     // ブログ一覧を取得
-    const posts = await getBlogList();
+    const quieries: MicroCMSQueries = {
+        filters: 'category[not_equals]page',
+    }
+    const posts = await getBlogList(quieries);
 
     // フィードに追加
     posts.map((post) => {

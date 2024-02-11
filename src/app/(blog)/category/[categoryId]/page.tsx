@@ -1,11 +1,12 @@
 export const dynamicParams = false;
 import Link from "next/link";
-import { getCategoryDetail, getCategoryList } from "@/lib/microcms";
+import { getList, getCategoryList } from "@/lib/microcms";
 import { Thumbnail } from "@/components/elements/thumbnail";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import { AiTwotoneFolderOpen } from "react-icons/ai";
+import { MicroCMSQueries} from "microcms-js-sdk";
 import styles from "./page.module.css"
 
 dayjs.extend(utc);
@@ -50,7 +51,11 @@ export default async function StaticDetailPage({
 }: {
     params: {categoryId: string}
 }) {
-    const { contents } = await getCategoryDetail(categoryId);
+    const queries: MicroCMSQueries = {
+        filters: 'category[not_equals]page[and]category[equals]' + categoryId,
+        limit: 10,
+    }
+    const { contents } = await getList(queries);
     
     if (!contents || contents.length === 0) {
         return <h1>No contents</h1>;

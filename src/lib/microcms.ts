@@ -37,12 +37,15 @@ export const client = createClient({
 
 // ブログ一覧を取得
 export const getList = async (queries?: MicroCMSQueries) => {
-    const listData = await client.getList<Blog>({
-        endpoint: "blogs",
-        queries: {
+    if (!queries) {
+        queries = {
             filters: 'category[not_equals]page',
             limit: 10,
-        }
+        };
+    }
+    const listData = await client.getList<Blog>({
+        endpoint: "blogs",
+        queries
     });
     
     return listData;
@@ -75,29 +78,11 @@ export const getCategoryList = async (queries?: MicroCMSQueries) => {
     return listData;
 };
 
-// カテゴリーごとに記事を取得
-export const getCategoryDetail = async (
-    categoryId: string,
-    queries?: MicroCMSQueries
-) => {
-    const listData = await client.getList<Blog>({
-        endpoint: "blogs",
-        queries: {
-            filters: 'category[not_equals]page[and]category[equals]' + categoryId,
-            limit: 10,
-        }
-    });
-    
-    return listData;
-};
-
 // ブログ一覧を取得（RSS用）
 export const getBlogList = async (queries?: MicroCMSQueries) => {
     const listData = await client.getAllContents<Blog>({
         endpoint: "blogs",
-        queries: {
-            filters: 'category[not_equals]page',
-        }
+        queries
     });
 
     return listData;
