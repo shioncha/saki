@@ -1,4 +1,5 @@
 export const dynamicParams = false;
+import { Metadata as NextMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDetail, getList } from "@/lib/microcms";
@@ -37,9 +38,29 @@ export async function generateMetadata ({
     if (!post || !post.title) {
         return "Untitled";
     }
+    
+    const description = post.content.replace(/(<([^>]+)>)/gi, '').slice(0, 100) + '...';
+    const images = post.eyecatch.url;
 
     return {
         title: post.title,
+        description,
+        openGraph: {
+            title: post.title,
+            description,
+            images,
+            url: `https://${Metadata.baseUrl}/blog/${postId}`,
+            siteName: Metadata.title,
+            locate: 'ja_JP',
+            type: 'article'
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description,
+            images,
+            site: Metadata.twitterId,
+        }
     };
 }
 
