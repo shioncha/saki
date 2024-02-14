@@ -1,5 +1,4 @@
 export const dynamicParams = false;
-import { Metadata as NextMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDetail, getList } from "@/lib/microcms";
@@ -49,7 +48,7 @@ export async function generateMetadata ({
             title: post.title,
             description,
             images,
-            url: `https://${Metadata.baseUrl}/blog/${postId}`,
+            url: `${Metadata.baseUrl}/blog/${postId}`,
             siteName: Metadata.title,
             locate: 'ja_JP',
             type: 'article'
@@ -77,7 +76,7 @@ export default async function StaticDetailPage({
 
     return (
         <div className={styles.container}>
-            <ShareTree url={'https://' + Metadata.baseUrl + '/blog/' + postId} title={post.title + ' | ' + Metadata.title}/>
+            <ShareTree url={`${Metadata.baseUrl}/blog/${postId}`} title={post.title + ' | ' + Metadata.title}/>
             <article className={styles.article}>
                 <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
                 <p>

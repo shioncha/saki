@@ -4,7 +4,8 @@ import { SiRss, SiFeedly, SiTwitter } from "@icons-pack/react-simple-icons";
 import Metadata from "@/const/meta";
 
 export function Aside() {
-    const feedlyUrl = `https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2F${Metadata.baseUrl}%2Ffeed`
+    const encodedUrl = encodeURIComponent(Metadata.baseUrl);
+    const feedlyUrl = `https://feedly.com/i/subscription/feed%2F${encodedUrl}%2Ffeed`
 
     return (
         <aside className={styles.aside}>

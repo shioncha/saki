@@ -7,6 +7,7 @@ import timezone from "dayjs/plugin/timezone";
 import { ShareTree } from "@/components/layouts/share";
 import { Thumbnail } from "@/components/elements/thumbnail";
 import styles from "./page.module.css";
+import Metadata from "@/const/meta";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -46,7 +47,7 @@ export default async function StaticDetailPage() {
 
     return (
         <article className={styles.container}>
-            <ShareTree url={'https://mixne.net/' + postId} title={post.title}/>
+            <ShareTree url={`${Metadata.baseUrl}/${postId}`} title={post.title}/>
             <div className={styles.article}>
                 <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
                 <h1>{post.title}</h1>
