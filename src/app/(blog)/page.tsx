@@ -22,14 +22,14 @@ export default async function StaticPage() {
       {contents.map((post) => {
         return (
           <article key={post.id}>
-            <Link href={`/blog/${post.id}`} className={styles.item}>
+            <a href={`/blog/${post.id}`} className={styles.item}>
               <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
               <p>
                 <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
-                <span className={styles.category}><Link href={`/category/${post.category.id}`}>{post.category.name}</Link></span>
+                <span className={styles.category}>{post.category.name}</span>
               </p>
               <h1 className={styles.title}>{post.title}</h1>
-            </Link>
+            </a>
           </article>
         );
       })}
