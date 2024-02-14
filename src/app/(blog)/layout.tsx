@@ -32,6 +32,9 @@ export const metadata: NextMetadata = {
   },
   alternates: {
     canonical: Metadata.baseUrl,
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
   },
 };
 
