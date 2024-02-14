@@ -1,11 +1,23 @@
 .aside {
-    display: none;
     width: 300px;
-    margin-left: 30px;
+}
+
+.container {
+    height: 100%;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
 }
 
 .aside ol {
     margin-left: 1.5rem;
+}
+
+.aside ol ol {
+    margin-top: 0;
 }
 
 .aside ul {
@@ -21,8 +33,15 @@
     padding: 6px 1.5rem;
 }
 
-.contentContainer {
-    padding: 0 21px;
+.content {
+    padding: 0 1.5rem;
+}
+
+.toc a {
+    color: var(--text-color);
+}
+
+.follow .content {
     text-align: center;
 }
 
@@ -31,17 +50,20 @@
     list-style: none;
 }
 
+.icons li:not(:first-child) {
+    margin-left: 1rem;
+}
+
 .icon {
     background-color: var(--bg-main-color);
     border-radius: 50%;
     width: 48px;
     height: 48px;
     padding: 12px;
-    margin: 0 auto;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 480px) {
     .aside {
-        display: block;
+        display: none;
     }
 }

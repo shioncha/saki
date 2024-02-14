@@ -35,6 +35,9 @@ dependencies:
   react-share:
     specifier: ^5.0.3
     version: 5.0.3(react@18.2.0)
+  tocbot:
+    specifier: ^4.25.0
+    version: 4.25.0
 
 devDependencies:
   '@types/node':
@@ -2419,6 +2422,10 @@ packages:
     dependencies:
       is-number: 7.0.0
     dev: true
+
+  /tocbot@4.25.0:
+    resolution: {integrity: sha512-kE5wyCQJ40hqUaRVkyQ4z5+4juzYsv/eK+aqD97N62YH0TxFhzJvo22RUQQZdO3YnXAk42ZOfOpjVdy+Z0YokA==}
+    dev: false
 
   /tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}

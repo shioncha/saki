@@ -139,3 +139,7 @@ table tr:last-child td:last-child {
         font-size: 1.25rem;
     }
 }
+
+.is-active-link {
+    font-weight: bold;
+}

@@ -84,7 +84,7 @@ export default async function StaticDetailPage({
                     <span className={styles.category}><Link href={'/category/' + post.category.id}>{post.category.name}</Link></span>
                 </p>
                 <h1>{post.title}</h1>
-                <div>{parse(post.content)}</div>
+                <div className="prose">{parse(post.content)}</div>
             </article>
             <Aside />
         </div>
