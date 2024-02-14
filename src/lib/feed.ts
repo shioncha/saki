@@ -11,7 +11,7 @@ export const generateRssFeed = async (): Promise<string> => {
         id: Metadata.baseUrl,
         link: Metadata.baseUrl,
         language: 'ja',
-        copyright: '© 2024 mixne',
+        copyright: `© ${new Date().getFullYear()} ${Metadata.title}`,
         generator: Metadata.baseUrl,
     });
 
