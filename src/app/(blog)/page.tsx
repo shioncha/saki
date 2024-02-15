@@ -1,13 +1,6 @@
-import Link from "next/link";
 import { getList } from "@/lib/microcms";
-import { Thumbnail } from "@/components/elements/thumbnail";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
+import PostPreview from "@/components/elements/postPreview";
 import styles from "./page.module.css";
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 export default async function StaticPage() {
   const { contents } = await getList();
@@ -17,23 +10,10 @@ export default async function StaticPage() {
   }
 
   return (
-    <>
-      <div className={styles.container}>
+    <div className={styles.container}>
       {contents.map((post) => {
-        return (
-          <article key={post.id}>
-            <a href={`/blog/${post.id}`} className={styles.item}>
-              <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
-              <p>
-                <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
-                <span className={styles.category}>{post.category.name}</span>
-              </p>
-              <h1 className={styles.title}>{post.title}</h1>
-            </a>
-          </article>
-        );
+        return <PostPreview key={post.id} post={post} />
       })}
-      </div>
-    </>
+    </div>
   );
 }

@@ -1,16 +1,9 @@
 export const dynamicParams = false;
-import Link from "next/link";
 import { getList, getCategoryList } from "@/lib/microcms";
-import { Thumbnail } from "@/components/elements/thumbnail";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
+import PostPreview from "@/components/elements/postPreview";
 import { AiTwotoneFolderOpen } from "react-icons/ai";
 import { MicroCMSQueries} from "microcms-js-sdk";
 import styles from "./page.module.css"
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 const getCategoryName = async (categoryId: string) => {
     const { contents } = await getCategoryList();
@@ -68,20 +61,9 @@ export default async function StaticDetailPage({
                 <span className={styles.headerTitle}>「{getCategoryName(categoryId)}」の記事一覧</span>
             </div>
             <div className={styles.container}>
-            {contents.map((post) => {
-            return (
-                <article key={post.id}>
-                    <Link href={`/blog/${post.id}`} className={styles.item}>
-                    <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
-                    <p>
-                        <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
-                        <span className={styles.category}><Link href={`/category/${post.category.id}`}>{post.category.name}</Link></span>
-                    </p>
-                    <h1 className={styles.title}>{post.title}</h1>
-                    </Link>
-                </article>
-                );
-            })}
+                {contents.map((post) => {
+                    return <PostPreview key={post.id} post={post} />
+                })}
             </div>
         </>
     );
