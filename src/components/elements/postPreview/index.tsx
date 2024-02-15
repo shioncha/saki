@@ -1,3 +1,4 @@
+import Link from "next/link";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
@@ -14,14 +15,14 @@ export default function PostPreview(
     
     return (
         <article key={post.id}>
-            <a href={`/blog/${post.id}`} className={styles.item}>
+            <Link href={`/blog/${post.id}`} className={styles.item}>
                 <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
                 <p>
                     <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
                     <span className={styles.category}>{post.category.name}</span>
                 </p>
                 <h1 className={styles.title}>{post.title}</h1>
-            </a>
+            </Link>
         </article>
     );
 }
