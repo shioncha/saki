@@ -27,7 +27,7 @@ body {
     color: var(--text-color);
     display: flex;
     flex-direction: column;
-    font-family: "Heletica Neue", Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-family: "Heletica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", Meiryo, sans-serif;
     min-height: 100vh;
 }
 

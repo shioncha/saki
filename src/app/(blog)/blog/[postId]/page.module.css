@@ -6,7 +6,6 @@
     line-height: 1.7;
     max-width: 96%;
     padding: 0 24px 24px 24px;
-    margin-left: 2%;
 }
 
 .article figure {
@@ -37,7 +36,7 @@
 
 @media screen and (min-width: 1180px) {
     .article {
-        margin: 0;
+        margin: 0 0 0 2%;
         max-width: calc(100% - 330px);
     }
     .container {
