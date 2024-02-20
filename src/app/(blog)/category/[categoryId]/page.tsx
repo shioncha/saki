@@ -5,7 +5,7 @@ import { AiTwotoneFolderOpen } from "react-icons/ai";
 import { MicroCMSQueries} from "microcms-js-sdk";
 import styles from "./page.module.css"
 
-const getCategoryName = async (categoryId: string) => {
+const getCategoryName = async (categoryId: string): Promise<string> => {
     const { contents } = await getCategoryList();
     const category: any = contents.find((a) => a.id === categoryId);
     const categoryName: string = category.name;
@@ -58,7 +58,7 @@ export default async function StaticDetailPage({
         <>
             <div className={styles.header}>
                 <span className={styles.icon}><AiTwotoneFolderOpen /></span>
-                <span className={styles.headerTitle}>「{getCategoryName(categoryId)}」の記事一覧</span>
+                <span className={styles.headerTitle}>「{await getCategoryName(categoryId)}」の記事一覧</span>
             </div>
             <div className={styles.container}>
                 {contents.map((post) => {
