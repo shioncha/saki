@@ -40,7 +40,7 @@ export const getList = async (queries?: MicroCMSQueries) => {
     if (!queries) {
         queries = {
             filters: 'category[not_equals]page',
-            limit: 10,
+            limit: 12,
         };
     }
     const listData = await client.getList<Blog>({

@@ -6,7 +6,7 @@
     margin: 30px auto 0;
     padding: 16px 0;
     text-align: center;
-    width: calc(100% - 14px);
+    width: 100%;
 }
 
 .footer a {
@@ -32,6 +32,9 @@
 }
 
 @media screen and (min-width: 480px) {
+    .footer {
+        width: calc(100% - 14px);
+    }
     .navigation ul li {
         width: fit-content;
     }
