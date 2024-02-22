@@ -5,7 +5,7 @@
     --logo-color: #6cc9d4;
     --main-color: #56a0a8;
     --text-color: #444;
-    --text-sub-color: #a8adad;
+    --text-sub-color: #a0a0a0;
     --text-hover-color: #b1d3d6;
     --decoration-color: #f1eff7;
 }
@@ -72,6 +72,10 @@ a {
 
 a:hover {
     color: var(--text-hover-color);
+}
+
+strong {
+    color: #EF7E46;
 }
 
 hr {
