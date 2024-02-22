@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SiMisskey } from "@icons-pack/react-simple-icons"
+import { SiMisskey } from "react-icons/si";
 import styles from "./MisskeyShare.module.css";
 
 export function MisskeyShare({
@@ -13,7 +13,8 @@ export function MisskeyShare({
         return;
     }
 
-    const link = `https://misskey.io/share?text=[${title}](${url})`;
+    const encodedUrl = encodeURIComponent(url);
+    const link = `https://misskey-hub.net/share/?text=[${title}](${encodedUrl})&visibility=public&localOnly=0&manualInstance=https:%2F%2Fmisskey.backspace.fm`;
 
     return (
         <Link href={link} target="_blank" rel="noopener noreferrer">
