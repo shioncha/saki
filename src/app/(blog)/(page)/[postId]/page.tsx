@@ -30,10 +30,11 @@ export async function generateStaticParams() {
     return [...paths];
 }
 
-export async function generateMetadata (
-    params: { postId: string }
-) {
-    const postId = params.postId;
+export async function generateMetadata ({
+    params: {postId},
+}: {
+    params: {postId: string}
+}) {
     const post = await getDetail(postId);
 
     if (!post || !post.title) {
