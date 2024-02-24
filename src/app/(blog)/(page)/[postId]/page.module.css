@@ -3,13 +3,12 @@
     border-radius: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     line-height: 1.5;
-    width: 100%;
+    width: calc(100% - 24px);
     padding: 0 24px 24px 24px;
 }
 
 .container {
     display: flex;
-    width: calc(100% - 24px);
     max-width: 780px;
     margin: 30px auto 0;
 }
