@@ -1,15 +1,26 @@
 import styles from './footer.module.css'
 import Link from 'next/link'
 import Metadata from '@/const/meta';
+import { getList } from "@/lib/microcms";
+import { MicroCMSQueries } from "microcms-js-sdk";
 
-export function Footer() {
+export async function Footer() {
+    const queries: MicroCMSQueries = {
+        filters: 'category[equals]page',
+        limit: 12,
+    }
+    const { contents } = await getList(queries);
     return (
         <footer className={styles.footer}>
             <div className={styles.navigation}>
                 <ul>
-                    <li><Link href="/about">このサイトについて</Link></li>
-                    <li><Link href="/contact">お問い合わせ</Link></li>
-                    <li><Link href="/privacy">プライバシーポリシー</Link></li>
+                    {contents.map((content) => {
+                        return (
+                            <li key={content.id}>
+                                <Link href={`/${content.id}`}>{content.title}</Link>
+                            </li>
+                        )
+                    })}
                 </ul>
             </div>
             <p>&copy; {new Date().getFullYear()} {Metadata.title}</p>
