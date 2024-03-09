@@ -5,10 +5,16 @@ import { MicroCMSQueries } from 'microcms-js-sdk';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const queries: MicroCMSQueries = {
-    fields: 'id,updatedAt',
+    fields: 'id,updatedAt,category',
   }
   const posts = await getBlogList(queries);
   const urls = posts.map((post) => {
+    if (post.category.id === 'page') {
+      return {
+        url: `${Metadata.baseUrl}/${post.id}`,
+        lastModified: new Date(post.updatedAt),
+      };
+    }
     return {
       url: `${Metadata.baseUrl}/blog/${post.id}`,
       lastModified: new Date(post.updatedAt),
