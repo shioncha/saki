@@ -31,7 +31,6 @@ export const metadata: NextMetadata = {
     creator: Metadata.twitterId,
   },
   alternates: {
-    canonical: Metadata.baseUrl,
     types: {
       'application/rss+xml': '/feed.xml',
     },
