@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cloudflare/next-on-pages": "^1.10.0",
     "@cloudflare/workers-types": "^4.20240222.0",
     "@icons-pack/react-simple-icons": "^9.3.0",
     "dayjs": "^1.11.10",
