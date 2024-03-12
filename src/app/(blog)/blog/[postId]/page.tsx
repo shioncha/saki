@@ -11,6 +11,7 @@ import { Aside } from "@/components/layouts/aside";
 import { Thumbnail } from "@/components/elements/thumbnail";
 import styles from "./page.module.css";
 import Metadata from "@/const/meta";
+import { Comments } from "@/components/elements/comments";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -77,15 +78,18 @@ export default async function StaticDetailPage({
     return (
         <div className={styles.container}>
             <ShareTree url={`${Metadata.baseUrl}/blog/${postId}`} title={post.title + ' | ' + Metadata.title}/>
-            <article className={styles.article}>
-                <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
-                <p>
-                    <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
-                    <span className={styles.category}><Link href={'/category/' + post.category.id}>{post.category.name}</Link></span>
-                </p>
-                <h1>{post.title}</h1>
-                <div className="prose">{parse(post.content)}</div>
-            </article>
+            <div className={styles.contents}>
+                <article className={styles.article}>
+                    <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
+                    <div className={styles.info}>
+                        <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
+                        <span className={styles.category}><Link href={'/category/' + post.category.id}>{post.category.name}</Link></span>
+                    </div>
+                    <h1>{post.title}</h1>
+                    <div className="prose">{parse(post.content)}</div>
+                </article>
+                <Comments postId={postId}/>
+            </div>
             <Aside />
         </div>
     );
