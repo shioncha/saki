@@ -23,13 +23,13 @@ app.get('/blog/:slug/comments', async (c) => {
 app.post('/blog/:slug/comments', async (c) => {
   const { slug } = c.req.param();
   const { yourName, yourEmail, comment } = await c.req.json();
-  const { lastInsertRowid } = await c.env.DB.prepare(
+  const { success } = await c.env.DB.prepare(
     'INSERT INTO comments (postId, yourName, yourEmail, comment, createdDate, createdTime) VALUES (?, ?, ?, ?, ?, ?)'
   )
     .bind(slug, yourName, yourEmail, comment, new Date().toISOString().split('T')[0], new Date().toISOString().split('T')[1].split('.')[0])
     .run();
 
-  return c.json({ id: lastInsertRowid });
+  return c.json({ id: success });
 })
 
 export default app;
