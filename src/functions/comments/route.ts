@@ -1,3 +1,4 @@
+import { D1Database } from '@cloudflare/workers-types';
 import { Hono } from "hono";
 
 export const runtime = "edge";
