@@ -2,7 +2,11 @@ import { Hono } from "hono";
 
 export const runtime = "edge";
 
-const app = new Hono().basePath('/api');
+type Bindings = {
+  DB: D1Database
+}
+
+const app = new Hono<{ Bindings: Bindings }>().basePath('/api');
 
 app.get('/blog/:slug/comments', async (c) => {
   const { slug } = c.req.param();
