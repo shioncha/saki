@@ -32,4 +32,5 @@ app.post('/blog/:slug/comments', async (c) => {
   return c.json({ id: success });
 })
 
-export default app;
+export const GET = app.fetch;
+export const POST = app.fetch;
