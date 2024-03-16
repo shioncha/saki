@@ -3,7 +3,6 @@ import { Hono } from "hono";
 
 export const runtime = "edge";
 
-
 declare global {
   namespace NodeJS {
     interface ProcessEnv {

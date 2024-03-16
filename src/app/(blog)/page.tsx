@@ -6,7 +6,11 @@ export default async function StaticPage() {
   const { contents } = await getList();
 
   if (!contents || contents.length === 0) {
-    return <h1>No contents</h1>;
+    return (
+      <div className={styles.container}>
+        <h1>No contents</h1>
+      </div>
+    );
   }
 
   return (
