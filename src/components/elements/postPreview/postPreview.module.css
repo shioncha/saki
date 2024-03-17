@@ -22,6 +22,12 @@
     margin-top: 1.5rem;
 }
 
+.info {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 0;
+}
+
 .date {
     color: var(--text-sub-color);
 }
@@ -31,6 +37,7 @@
     border: 1px solid var(--main-color);
     border-radius: 100vh;
     color: var(--bg-main-color);
-    padding: 4px 10px;
-    margin: 0 0 0 1rem;
+    font-size: .9rem;
+    margin: 0 0 0 .5rem;
+    padding: 2px 8px 1px;
 }

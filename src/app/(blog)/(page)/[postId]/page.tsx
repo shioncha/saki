@@ -1,5 +1,7 @@
+export const dynamicParams = false;
 import { notFound } from "next/navigation";
 import { getDetail, getList } from "@/lib/microcms";
+import { MicroCMSQueries } from "microcms-js-sdk";
 import parse from "html-react-parser";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -13,7 +15,11 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export async function generateStaticParams() {
-    const { contents } = await getList();
+    const queries: MicroCMSQueries = {
+        filters: 'category[equals]page',
+        limit: 12,
+    }
+    const { contents } = await getList(queries);
 
     const paths = contents.map((post) => {
         return {
@@ -24,8 +30,11 @@ export async function generateStaticParams() {
     return [...paths];
 }
 
-export async function generateMetadata () {
-    const postId = 'about';
+export async function generateMetadata ({
+    params: {postId},
+}: {
+    params: {postId: string}
+}) {
     const post = await getDetail(postId);
 
     if (!post || !post.title) {
@@ -37,8 +46,11 @@ export async function generateMetadata () {
     };
 }
 
-export default async function StaticDetailPage() {
-    const postId = 'about';
+export default async function StaticDetailPage({
+    params: {postId},
+}: {
+    params: {postId: string}
+}) {
     const post = await getDetail(postId);
 
     if (!post) {

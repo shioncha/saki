@@ -2,15 +2,13 @@
     background-color: var(--bg-main-color);
     border-radius: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
     line-height: 1.5;
-    max-width: 100%;
+    width: calc(100% - 24px);
     padding: 0 24px 24px 24px;
 }
 
 .container {
     display: flex;
-    width: 96%;
     max-width: 780px;
     margin: 30px auto 0;
 }

@@ -17,10 +17,10 @@ export default function PostPreview(
         <article key={post.id}>
             <Link href={`/blog/${post.id}`} className={styles.item}>
                 <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
-                <p>
+                <div className={styles.info}>
                     <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
                     <span className={styles.category}>{post.category.name}</span>
-                </p>
+                </div>
                 <h1 className={styles.title}>{post.title}</h1>
             </Link>
         </article>

@@ -29,7 +29,7 @@
     gap: 24px;
     grid-template-columns: 1fr;
     margin: 30px auto 0;
-    width: 96%;
+    width: calc(100% - 24px);
 }
 
 @media screen and (min-width: 768px) and (max-width: 1180px) {

@@ -13,7 +13,7 @@ export function Aside() {
             <div className={styles.container}>
                 <div className={styles.sticky}>
                     <div className={styles.toc}>
-                        <p className={styles.title}>もくじ</p>
+                        <p className={styles.title}>Contents</p>
                         <div className={styles.content}>
                             <Toc />
                         </div>
