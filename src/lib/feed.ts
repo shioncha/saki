@@ -15,20 +15,21 @@ export const generateRssFeed = async (): Promise<string> => {
         generator: Metadata.baseUrl,
     });
 
-    // ブログ一覧を取得
+    // 記事の一覧を取得
     const quieries: MicroCMSQueries = {
+        fields: 'id,title,content,eyecatch,createdAt,publishedAt',
         filters: 'category[not_equals]page',
     }
     const posts = await getBlogList(quieries);
 
-    // フィードに追加
+    // 記事をフィードに追加
     posts.map((post) => {
         feed.addItem({
             title: post.title,
             description: "",
             content: post.content,
             image: post.eyecatch?.url,
-            date: new Date(post.createdAt),
+            date: new Date(post.publishedAt || post.createdAt),
             id: `${Metadata.baseUrl}/blog/${post.id}`,
             link: `${Metadata.baseUrl}/blog/${post.id}`,
         });

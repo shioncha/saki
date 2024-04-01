@@ -35,7 +35,7 @@ export const client = createClient({
     apiKey: process.env.MICROCMS_API_KEY,
 });
 
-// ブログ一覧を取得
+// 記事の一覧を取得
 export const getList = async (queries?: MicroCMSQueries) => {
     if (!queries) {
         queries = {
@@ -51,7 +51,7 @@ export const getList = async (queries?: MicroCMSQueries) => {
     return listData;
 };
 
-// ブログの詳細を取得
+// 記事の内容を取得
 export const getDetail = async (
     contentId: string,
     queries?: MicroCMSQueries
@@ -60,7 +60,7 @@ export const getDetail = async (
         endpoint: "blogs",
         contentId,
         queries
-    }) .catch((e) => { console.log(e); });
+    });
 
     return detailData;
 };
@@ -70,6 +70,7 @@ export const getCategoryList = async (queries?: MicroCMSQueries) => {
     const listData = await client.getList<Category>({
         endpoint: "categories",
         queries: {
+            fields: 'id,name',
             filters: 'id[not_equals]page',
             limit: 10,
         }
@@ -78,8 +79,8 @@ export const getCategoryList = async (queries?: MicroCMSQueries) => {
     return listData;
 };
 
-// ブログ一覧を取得（RSS用）
-export const getBlogList = async (queries?: MicroCMSQueries) => {
+// 全ての記事を取得 (RSS用)
+export const getBlogList = async (queries: MicroCMSQueries) => {
     const listData = await client.getAllContents<Blog>({
         endpoint: "blogs",
         queries
