@@ -27,9 +27,7 @@ export function Comments({ postId }) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData),
-        });
-
-        setFormData({ yourName: '', yourEmail: '', comment: '' });
+    });
     }
 
     useEffect(() => {
