@@ -39,6 +39,7 @@ export const client = createClient({
 export const getList = async (queries?: MicroCMSQueries) => {
     if (!queries) {
         queries = {
+            fields: 'id,title,eyecatch,category,publishedAt',
             filters: 'category[not_equals]page',
             limit: 12,
         };
