@@ -10,7 +10,7 @@
 }
 
 .shareInner {
-    background-color: var(--bg-main-color);
+    background-color: var(--c-bg-content);
     border-radius: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     position: sticky;

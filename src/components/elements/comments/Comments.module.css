@@ -1,5 +1,5 @@
 .container {
-    background-color: var(--bg-main-color);
+    background-color: var(--c-bg-content);
     border: 2px solid var(--decoration-color);
     border-radius: 12px;
     margin: 30px 0 0 12px;
@@ -13,7 +13,7 @@
 }
 
 .comment:nth-child(even) {
-    background-color: var(--bg-color);
+    background-color: var(--c-bg-main);
 }
 
 .form {
@@ -39,7 +39,7 @@
     background-color: var(--main-color);
     border: none;
     border-radius: 8px;
-    color: var(--bg-main-color);
+    color: var(--c-bg-content);
     cursor: pointer;
     font-size: 1rem;
     padding: 5px 10px;

@@ -1,31 +1,43 @@
 :root {
-    --bg-color: #F5F9FF;
-    --bg-main-color: #FFF;
-    --bg-hover-color: #fafafa;
+    --c-bg-main: #f5f9fb;
+    --c-bg-content: #fff;
+    --c-bg-decoration: #f1eff7;
+    --c-bg-hover: #fafafa;
+    --c-text-main: #444;
+    --c-text-sub: #a0a0a0;
+    --c-text-link: #56a0a8;
+    --c-text-link-hover: #b1d3d6;
+    --c-text-logo: #6cc9d4;
+    --c-gray-1: #ddf;
+    --r-main: 24px;
+    --s-space: 24px;
+    /* 廃止予定 */
     --logo-color: #6cc9d4;
     --main-color: #56a0a8;
-    --text-color: #444;
-    --text-sub-color: #a0a0a0;
-    --text-hover-color: #b1d3d6;
     --decoration-color: #f1eff7;
 }
 
 @media (prefers-color-scheme: dark) {
      :root {
-        --bg-color: #222;
-        --bg-main-color: #333;
-        --bg-hover-color: #444;
+        --c-bg-main: #333;
+        --c-bg-content: #222;
+        --c-bg-decoration: #222;
+        --c-bg-hover: #444;
+        --c-text-main: #eee;
+        --c-text-sub: #a8adad;
+        --c-text-link: #6cc9d4;
+        --c-text-link-hover: #b1d3d6;
+        --c-text-logo: #6cc9d4;
+        /* 廃止予定 */
         --logo-color: #6cc9d4;
         --main-color: #6cc9d4;
-        --text-color: #eee;
-        --text-sub-color: #a8adad;
         --decoration-color: #222;
     }
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--c-bg-main);
+    color: var(--c-text-main);
     display: flex;
     flex-direction: column;
     font-family: "Heletica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", Meiryo, sans-serif;
@@ -71,7 +83,7 @@ a {
 }
 
 a:hover {
-    color: var(--text-hover-color);
+    color: var(--c-text-link-hoverver);
 }
 
 strong {
@@ -122,7 +134,7 @@ td p {
 }
 
 td {
-    background-color: var(--bg-main-color);
+    background-color: var(--c-bg-content);
 }
 
 table tr:last-child td:first-child {

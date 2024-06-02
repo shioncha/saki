@@ -1,5 +1,5 @@
 .header {
-    background-color: var(--bg-main-color);
+    background-color: var(--c-bg-content);
     border-radius: 16px;
     font-size: 1.2rem;
     font-weight: bold;

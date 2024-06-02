@@ -1,5 +1,5 @@
 .article {
-    background-color: var(--bg-main-color);
+    background-color: var(--c-bg-content);
     border-radius: 24px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
@@ -32,25 +32,25 @@
 }
 
 .date {
-    color: var(--text-sub-color);
+    color: var(--c-text-sub);
 }
 
 .category {
     background-color: var(--main-color);
     border: 1px solid var(--main-color);
     border-radius: 100vh;
-    color: var(--bg-main-color);
+    color: var(--c-bg-content);
     font-size: .9rem;
     margin: 0 0 0 .5rem;
     padding: 2px 8px 1px;
 }
 
 .category:hover {
-    background-color: var(--text-hover-color);
+    background-color: var(--c-text-link-hover);
 }
 
 .category a {
-    color: var(--bg-main-color);
+    color: var(--c-bg-content);
     text-decoration: none;
 }
 
