@@ -57,10 +57,15 @@
 
 .icon {
     background-color: var(--c-bg-content);
+    border: 1px solid var(--c-gray-1);
     border-radius: 50%;
     width: 48px;
     height: 48px;
     padding: 12px;
+}
+
+.icon:hover {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 768px) {
