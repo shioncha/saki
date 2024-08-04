@@ -45,7 +45,8 @@ export default async function StaticDetailPage({
     params: {categoryId: string}
 }) {
     const queries: MicroCMSQueries = {
-        filters: 'category[not_equals]page[and]category[equals]' + categoryId,
+        fields: 'id,title,eyecatch,category,publishedAt',
+        filters: `category[not_equals]page[and]category[equals]${categoryId}`,
         limit: 10,
     }
     const { contents } = await getList(queries);
