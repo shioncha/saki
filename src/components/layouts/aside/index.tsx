@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./aside.module.css";
-import { SiRss, SiFeedly, SiTwitter } from "react-icons/si";
+import { SiRss, SiFeedly } from "react-icons/si";
+import { FaTwitter } from "react-icons/fa";
 import Metadata from "@/const/meta";
 import { Toc } from "@/components/elements/toc";
 
@@ -39,7 +40,7 @@ export function Aside() {
                                 <li>
                                     <a href={"https://twitter.com/" + Metadata.twitterId} target="_blank" rel="noopener noreferrer">
                                         <div className={styles.icon}>
-                                            <SiTwitter color="#1DA1F2" size={24} />
+                                            <FaTwitter color="#1DA1F2" size={24} />
                                         </div>
                                     </a>
                                 </li>
