@@ -5,10 +5,6 @@ import { Header } from "@/components/layouts/header";
 import { Footer } from "@/components/layouts/footer";
 
 export const metadata: NextMetadata = {
-  title: {
-    default: Metadata.title,
-    template: `%s | ${Metadata.title}`,
-  },
   description: Metadata.description,
   openGraph: {
     title: {
