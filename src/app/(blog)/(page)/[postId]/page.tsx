@@ -14,6 +14,12 @@ import Metadata from "@/const/meta";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+interface Props {
+    params: {
+        postId: string;
+    }
+}
+
 export async function generateStaticParams() {
     const queries: MicroCMSQueries = {
         filters: 'category[equals]page',
@@ -32,9 +38,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata ({
     params: {postId},
-}: {
-    params: {postId: string}
-}) {
+}: Props) {
     const post = await getDetail(postId);
 
     if (!post || !post.title) {
@@ -48,9 +52,7 @@ export async function generateMetadata ({
 
 export default async function StaticDetailPage({
     params: {postId},
-}: {
-    params: {postId: string}
-}) {
+}: Props): Promise<JSX.Element> {
     const post = await getDetail(postId);
 
     if (!post) {

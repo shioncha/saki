@@ -9,10 +9,11 @@ import styles from "./postPreview.module.css";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-export default function PostPreview(
-    {post}: {post: Blog}
-) {
-    
+interface Props {
+    post: Blog;
+}
+
+export default function PostPreview({ post }: Props): JSX.Element {
     return (
         <article key={post.id}>
             <Link href={`/blog/${post.id}`} className={styles.item}>
