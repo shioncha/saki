@@ -3,22 +3,27 @@ import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon, Poc
 import { MisskeyShare } from "@/components/elements/misskey-share-button"
 import styles from "./share.module.css"
 
-export function ShareTree(props: { url: string; title: string }) {
+interface Props {
+    url: string;
+    title: string;
+}
+
+export function ShareTree({ url, title }: Props): JSX.Element {
     return (
         <div className={styles.share0}>
             <div className={styles.share}>
                 <div className={styles.shareInner}>
                     <div className={styles.buttons}>
-                        <TwitterShareButton url={props.url} title={props.title}>
+                        <TwitterShareButton url={url} title={title}>
                             <TwitterIcon size={48} round={true} />
                         </TwitterShareButton>
-                        <FacebookShareButton url={props.url}>
+                        <FacebookShareButton url={url}>
                             <FacebookIcon size={48} round={true} />
                         </FacebookShareButton>
-                        <PocketShareButton url={props.url} title={props.title}>
+                        <PocketShareButton url={url} title={title}>
                             <PocketIcon size={48} round={true} />
                         </PocketShareButton>
-                        <MisskeyShare url={props.url} title={props.title} />
+                        <MisskeyShare url={url} title={title} />
                     </div>
                 </div>
             </div>

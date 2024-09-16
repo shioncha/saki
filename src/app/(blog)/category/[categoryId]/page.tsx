@@ -5,6 +5,12 @@ import { AiTwotoneFolderOpen } from "react-icons/ai";
 import { MicroCMSQueries} from "microcms-js-sdk";
 import styles from "./page.module.css"
 
+interface Props {
+    params: {
+        categoryId: string;
+    }
+}
+
 const getCategoryName = async (categoryId: string): Promise<string> => {
     const { contents } = await getCategoryList();
     const category: any = contents.find((a) => a.id === categoryId);
@@ -26,9 +32,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata ({
     params: {categoryId},
-}: {
-    params: {categoryId: string}
-}) {
+}: Props) {
     const name = await getCategoryName(categoryId);
     if (!name) {
         return "Untitled";
@@ -41,9 +45,7 @@ export async function generateMetadata ({
 
 export default async function StaticDetailPage({
     params: {categoryId},
-}: {
-    params: {categoryId: string}
-}) {
+}: Props): Promise<JSX.Element> {
     const queries: MicroCMSQueries = {
         fields: 'id,title,eyecatch,category,publishedAt',
         filters: `category[not_equals]page[and]category[equals]${categoryId}`,

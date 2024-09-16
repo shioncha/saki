@@ -16,6 +16,12 @@ import { Comments } from "@/components/elements/comments";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+interface Props {
+    params: {
+        postId: string;
+    }
+}
+
 export async function generateStaticParams() {
     const { contents } = await getList();
 
@@ -30,9 +36,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata ({
     params: { postId },
-}: {
-    params: { postId: string };
-}) {
+}: Props) {
     const post = await getDetail(postId);
 
     if (!post || !post.title) {
@@ -66,9 +70,7 @@ export async function generateMetadata ({
 
 export default async function StaticDetailPage({
     params: { postId },
-}: {
-    params: { postId: string };
-}) {
+}: Props): Promise<JSX.Element> {
     const post = await getDetail(postId);
 
     if (!post) {

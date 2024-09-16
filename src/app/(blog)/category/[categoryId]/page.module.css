@@ -18,7 +18,7 @@
     align-items: center;
     background-color: rgba(108, 201, 212, 0.2);
     border-radius: 6px;
-    color: var(--logo-color);
+    color: var(--c-text-logo);
     display: inline-flex;
     font-size: 2rem;
     padding: 10px;

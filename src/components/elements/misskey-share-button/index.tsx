@@ -2,15 +2,14 @@ import Link from "next/link";
 import { SiMisskey } from "react-icons/si";
 import styles from "./MisskeyShare.module.css";
 
-export function MisskeyShare({
-    url,
-    title,
-}: {
+interface Props {
     url: string;
     title: string;
-}) {
+}
+
+export function MisskeyShare({ url, title }: Props): JSX.Element | null {
     if (!url || !title) {
-        return;
+        return null;
     }
 
     const encodedUrl = encodeURIComponent(url);
@@ -22,5 +21,5 @@ export function MisskeyShare({
                 <SiMisskey color='white' size={24}/>
             </div>
         </Link>
-    )
+    );
 }

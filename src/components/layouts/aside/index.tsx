@@ -5,7 +5,7 @@ import { FaTwitter } from "react-icons/fa";
 import Metadata from "@/const/meta";
 import { Toc } from "@/components/elements/toc";
 
-export function Aside() {
+export function Aside(): JSX.Element {
     const encodedUrl = encodeURIComponent(Metadata.baseUrl);
     const feedlyUrl = `https://feedly.com/i/subscription/feed%2F${encodedUrl}%2Ffeed`
 
