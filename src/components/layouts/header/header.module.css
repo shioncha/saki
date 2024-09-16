@@ -7,7 +7,7 @@
 }
 
 .header h1 {
-    color: var(--logo-color);
+    color: var(--c-text-logo);
     font-size: 2.5rem;
     font-weight: 600;
     margin: 0;

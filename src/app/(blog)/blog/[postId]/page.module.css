@@ -14,7 +14,7 @@
 }
 
 .article figure {
-    background-color: var(--decoration-color);
+    background-color: var(--c-gray-0);
     border-radius: 11px;
     padding: 5px;
 }
@@ -36,8 +36,8 @@
 }
 
 .category {
-    background-color: var(--main-color);
-    border: 1px solid var(--main-color);
+    background-color: var(--c-text-link);
+    border: 1px solid var(--c-text-link);
     border-radius: 100vh;
     color: var(--c-bg-content);
     font-size: .9rem;

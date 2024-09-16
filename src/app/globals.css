@@ -8,13 +8,10 @@
     --c-text-link: #56a0a8;
     --c-text-link-hover: #b1d3d6;
     --c-text-logo: #6cc9d4;
+    --c-gray-0: #f1eff7;
     --c-gray-1: #ddf;
     --r-main: 24px;
     --s-space: 24px;
-    /* 廃止予定 */
-    --logo-color: #6cc9d4;
-    --main-color: #56a0a8;
-    --decoration-color: #f1eff7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,10 +25,7 @@
         --c-text-link: #6cc9d4;
         --c-text-link-hover: #b1d3d6;
         --c-text-logo: #6cc9d4;
-        /* 廃止予定 */
-        --logo-color: #6cc9d4;
-        --main-color: #6cc9d4;
-        --decoration-color: #222;
+        --c-gray-0: #444;
     }
 }
 
@@ -61,7 +55,7 @@ h1 {
 }
 
 h2 {
-    border-bottom: 1px solid var(--decoration-color);
+    border-bottom: 1px solid var(--c-gray-0);
     font-size: 1.4rem;
     font-weight: bold;
     margin-top: 3rem;
@@ -77,7 +71,7 @@ p {
 }
 
 a {
-    color: var(--main-color);
+    color: var(--c-text-link);
     text-decoration: none;
     transition: 0.3s ease-in-out;
 }
@@ -86,13 +80,37 @@ a:hover {
     color: var(--c-text-link-hoverver);
 }
 
+p code {
+    background-color: var(--c-gray-0);
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 0.1rem 0.4rem;
+    vertical-align: 0.1rem;
+}
+
+pre {
+    background-color: #223;
+    border-radius: 6px;
+    color: #fff;
+    display: block;
+    line-height: 1;
+    margin: 1rem 0 0 0;
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+pre code {
+    line-height: 1;
+}
+
 strong {
     color: #EF7E46;
 }
 
 hr {
     border: none;
-    border-top: 1px solid var(--decoration-color);
+    border-top: 1px solid var(--c-gray-0);
     margin: 3rem 0;
 }
 
@@ -121,8 +139,8 @@ ol {
 }
 
 table {
-    background-color: var(--decoration-color);
-    border: 1px solid var(--decoration-color);
+    background-color: var(--c-gray-0);
+    border: 1px solid var(--c-gray-0);
     border-radius: 10px;
     margin: 1rem 0 0 0;
 }
