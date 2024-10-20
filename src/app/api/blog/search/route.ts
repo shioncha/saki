@@ -9,7 +9,7 @@ const app = new Hono().basePath('/api');
 
 app.use(csrf({
   origin: [
-    'https://test_csrf.saki.pages.dev',
+    'https://test-csrf.saki.pages.dev',
     'https://dev.saki.pages.dev',
     'https://saki.pages.dev',
   ]
