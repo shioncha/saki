@@ -3,16 +3,11 @@ import { notFound } from "next/navigation";
 import { getDetail, getList } from "@/lib/microcms";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import parse from "html-react-parser";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
 import { ShareTree } from "@/components/layouts/share";
 import { Thumbnail } from "@/components/elements/thumbnail";
+import { DateFormatter } from "@/components/elements/dateFormatter";
 import styles from "./page.module.css";
 import Metadata from "@/const/meta";
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 interface Props {
     params: {
@@ -66,7 +61,7 @@ export default async function StaticDetailPage({
                 <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
                 <h1>{post.title}</h1>
                 <div>{parse(post.content)}</div>
-                <p>最終更新：{dayjs.utc(post.updatedAt).tz('Asia/Tokyo').format('YYYY年MM月DD日')}</p>
+                <p>最終更新：<DateFormatter date={post.publishedAt} /></p>
             </div>
         </article>
     );
