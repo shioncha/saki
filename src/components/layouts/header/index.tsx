@@ -2,23 +2,19 @@ import Link from 'next/link'
 import styles from './header.module.css'
 import { getCategoryList } from '@/lib/microcms'
 import Metadata from '@/const/meta';
+import { HeaderNav } from '@/components/elements/HeaderNav';
+import { HeaderSearchButton } from '@/components/elements/HeaderSearchButton';
 
 export async function Header() {
     const { contents } = await getCategoryList();
 
     return (
         <header className={styles.header}>
-            <Link href="/"><h1>{Metadata.title}</h1></Link>
-            <ul>
-                <li><Link href="/">Home</Link></li>
-                {contents.map((content) => {
-                    return (
-                        <li key={content.id}>
-                            <Link href={`/category/${content.id}`}>{content.name}</Link>
-                        </li>
-                    );
-                })}
-            </ul>
+            <div className={styles.container}>
+                <HeaderSearchButton />
+                <Link href="/" className={styles.logo}><h1>{Metadata.title}</h1></Link>
+            </div>
+            <HeaderNav />
         </header>
     )
 }
