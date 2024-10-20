@@ -1,15 +1,9 @@
+export const runtime = 'edge';
+
 import styles from './page.module.css';
 import SearchFunc from '@/components/elements/search';
 
-export default function Page({
-  searchParams,
-}: {
-  searchParams?: {
-    q: string;
-  };
-}) {
-  const q = searchParams?.q || '';
-  
+export default function Page() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Search</h1>
