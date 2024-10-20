@@ -7,7 +7,14 @@ export const runtime = "edge";
 
 const app = new Hono().basePath('/api');
 
-app.get('/blog/search', csrf(), async (c) => {
+app.use(csrf({
+  origin: [
+    'https://dev.saki.pages.dev',
+    'https://saki.pages.dev',
+  ]
+}));
+
+app.get('/blog/search', async (c) => {
   const query = c.req.query('q');
   const queries: MicroCMSQueries = {
     fields: 'id,title,publishedAt',
