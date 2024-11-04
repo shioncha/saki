@@ -38,7 +38,7 @@ export function Comments({ postId }) {
         };
 
         getComments();
-    }, []);
+    }, [postId]);
 
     return (
         <div className={styles.container}>
