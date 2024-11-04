@@ -1,7 +1,13 @@
+"use client";
+
+import { useEffect } from 'react';
 import styles from './page.module.css';
 import SearchFunc from '@/components/elements/search';
 
 export default function Page() {
+  useEffect(() => {
+  }, []);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Search</h1>
