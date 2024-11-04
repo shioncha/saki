@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import styles from './page.module.css';
 import SearchFunc from '@/components/elements/search';
 
