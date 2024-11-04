@@ -15,7 +15,19 @@ app.get('/blog/search', async (c) => {
     limit: 12,
     q: query,
   }
-  const { contents } = await getList(queries);
+  // const { contents } = await getList(queries);
+  const contents = [
+    {
+      id: '1',
+      title: 'title',
+      publishedAt: '2021-10-01',
+    },
+    {
+      id: '2',
+      title: 'title',
+      publishedAt: '2021-10-01',
+    },
+  ];
   return c.json(contents);
 })
 
