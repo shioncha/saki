@@ -3,18 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDetail, getList } from "@/lib/microcms";
 import parse from "html-react-parser";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
 import { ShareTree } from "@/components/layouts/share";
 import { Aside } from "@/components/layouts/aside";
 import { Thumbnail } from "@/components/elements/thumbnail";
+import { DateFormatter } from "@/components/elements/dateFormatter";
 import styles from "./page.module.css";
 import Metadata from "@/const/meta";
 import { Comments } from "@/components/elements/comments";
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 interface Props {
     params: {
@@ -84,7 +79,7 @@ export default async function StaticDetailPage({
                 <article className={styles.article}>
                     <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
                     <div className={styles.info}>
-                        <span className={styles.date}>{dayjs.utc(post.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')}</span>
+                        <span className={styles.date}><DateFormatter date={post.publishedAt} /></span>
                         <span className={styles.category}><Link href={'/category/' + post.category.id}>{post.category.name}</Link></span>
                     </div>
                     <h1>{post.title}</h1>

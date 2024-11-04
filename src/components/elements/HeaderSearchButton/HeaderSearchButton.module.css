@@ -1,0 +1,10 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.caption {
+  font-size: .75rem;
+}
