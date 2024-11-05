@@ -1,8 +1,10 @@
-import styles from './footer.module.css'
+import { MicroCMSQueries } from "microcms-js-sdk";
 import Link from 'next/link'
+
 import Metadata from '@/const/meta';
 import { getList } from "@/lib/microcms";
-import { MicroCMSQueries } from "microcms-js-sdk";
+
+import styles from './footer.module.css'
 
 export async function Footer() {
     const queries: MicroCMSQueries = {

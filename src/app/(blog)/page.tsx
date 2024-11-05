@@ -1,5 +1,6 @@
-import { getList } from "@/lib/microcms";
 import PostPreview from "@/components/elements/postPreview";
+import { getList } from "@/lib/microcms";
+
 import styles from "./page.module.css";
 
 export default async function StaticPage() {

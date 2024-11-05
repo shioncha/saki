@@ -1,8 +1,10 @@
-import { Metadata as NextMetadata } from "next";
-import Metadata from "@/const/meta"
 import "@/app/globals.css";
-import { Header } from "@/components/layouts/header";
+
+import { Metadata as NextMetadata } from "next";
+
 import { Footer } from "@/components/layouts/footer";
+import { Header } from "@/components/layouts/header";
+import Metadata from "@/const/meta"
 
 export const metadata: NextMetadata = {
   description: Metadata.description,

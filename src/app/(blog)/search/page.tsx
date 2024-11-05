@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
-import styles from './page.module.css';
+
 import SearchFunc from '@/components/elements/search';
+
+import styles from './page.module.css';
 
 export default function Page() {
   return (

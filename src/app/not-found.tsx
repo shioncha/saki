@@ -1,6 +1,9 @@
-import { Metadata as NextMetadata } from "next";
-import { Footer } from "@/components/layouts/footer";
 import "./globals.css";
+
+import { Metadata as NextMetadata } from "next";
+
+import { Footer } from "@/components/layouts/footer";
+
 import styles from "./not-found.module.css";
 
 export function generateMetadata(): NextMetadata {

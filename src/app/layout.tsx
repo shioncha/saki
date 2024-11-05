@@ -1,5 +1,6 @@
-import Metadata from "@/const/meta";
 import { Metadata as NextMetadata } from "next";
+
+import Metadata from "@/const/meta";
 
 export const metadata: NextMetadata = {
     title: {

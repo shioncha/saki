@@ -1,7 +1,8 @@
 import { Feed } from 'feed';
-import { getBlogList } from '@/lib/microcms';
-import Metadata from '@/const/meta';
 import { MicroCMSQueries } from 'microcms-js-sdk';
+
+import Metadata from '@/const/meta';
+import { getBlogList } from '@/lib/microcms';
 
 export const generateRssFeed = async (): Promise<string> => {
     // フィードを生成

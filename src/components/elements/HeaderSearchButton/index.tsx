@@ -1,6 +1,7 @@
 import Link from "next/link";
-import styles from "./HeaderSearchButton.module.css";
 import { CiSearch } from "react-icons/ci";
+
+import styles from "./HeaderSearchButton.module.css";
 
 export function HeaderSearchButton() {
 
