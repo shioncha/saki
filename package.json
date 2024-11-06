@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@cloudflare/workers-types": "^4.20240909.0",
-    "@icons-pack/react-simple-icons": "^9.7.0",
     "dayjs": "^1.11.13",
     "feed": "^4.2.2",
     "hono": "^4.6.1",
