@@ -4,6 +4,12 @@ import SearchFunc from '@/components/elements/search';
 
 import styles from './page.module.css';
 
+export function metadata() {
+  return {
+    title: 'Search',
+  };
+}
+
 export default function Page() {
   return (
     <div className={styles.container}>
