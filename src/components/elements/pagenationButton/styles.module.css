@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 0 0;
+  list-style: none;
+}
+
+.item:not(:first-child) {
+  margin-left: 16px;
+}
+
+.link {
+  color: var(--c-text-main);
+  display: flex;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.isActive {
+  background-color: var(--c-gray-0);
+  border-radius: 50%;
+}
