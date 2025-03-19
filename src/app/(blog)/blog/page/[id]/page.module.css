@@ -1,0 +1,24 @@
+.container {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  margin: 30px auto 0;
+  width: calc(100% - 24px);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    width: 96%;
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1180px) {
+  .container {
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    padding: 0 40px;
+    max-width: 1280px;
+  }
+}

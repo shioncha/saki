@@ -1,15 +1,18 @@
 export const dynamicParams = false;
+import parse from "html-react-parser";
+import { MicroCMSQueries } from "microcms-js-sdk";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getDetail, getList } from "@/lib/microcms";
-import parse from "html-react-parser";
-import { ShareTree } from "@/components/layouts/share";
-import { Aside } from "@/components/layouts/aside";
-import { Thumbnail } from "@/components/elements/thumbnail";
-import { DateFormatter } from "@/components/elements/dateFormatter";
-import styles from "./page.module.css";
-import Metadata from "@/const/meta";
+
 import { Comments } from "@/components/elements/comments";
+import { DateFormatter } from "@/components/elements/dateFormatter";
+import { Thumbnail } from "@/components/elements/thumbnail";
+import { Aside } from "@/components/layouts/aside";
+import { ShareTree } from "@/components/layouts/share";
+import Metadata from "@/const/meta";
+import { getBlogList,getDetail } from "@/lib/microcms";
+
+import styles from "./page.module.css";
 
 interface Props {
     params: {
@@ -18,11 +21,18 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    const { contents } = await getList();
+    const queries: MicroCMSQueries = {
+        fields: 'id',
+        filters: 'category[not_equals]page',
+    };
+    const posts = await getBlogList(queries);
 
-    const paths = contents.map((post) => {
+    const paths = posts.map((post) => {
         return {
             postId: post.id,
+            alternates: {
+                canonical: `${Metadata.baseUrl}/blog/${post.id}`,
+            }
         };
     });
 

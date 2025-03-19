@@ -1,5 +1,6 @@
-import Metadata from "@/const/meta";
 import { Metadata as NextMetadata } from "next";
+
+import Metadata from "@/const/meta";
 
 export const metadata: NextMetadata = {
     title: {
@@ -14,5 +15,9 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return <>{children}</>;
+    return (
+        <html lang="ja">
+            {children}
+        </html>
+    );
 }

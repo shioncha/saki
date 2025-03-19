@@ -1,13 +1,15 @@
 export const dynamicParams = false;
-import { notFound } from "next/navigation";
-import { getDetail, getList } from "@/lib/microcms";
-import { MicroCMSQueries } from "microcms-js-sdk";
 import parse from "html-react-parser";
-import { ShareTree } from "@/components/layouts/share";
-import { Thumbnail } from "@/components/elements/thumbnail";
+import { MicroCMSQueries } from "microcms-js-sdk";
+import { notFound } from "next/navigation";
+
 import { DateFormatter } from "@/components/elements/dateFormatter";
-import styles from "./page.module.css";
+import { Thumbnail } from "@/components/elements/thumbnail";
+import { ShareTree } from "@/components/layouts/share";
 import Metadata from "@/const/meta";
+import { getDetail, getList } from "@/lib/microcms";
+
+import styles from "./page.module.css";
 
 interface Props {
     params: {
@@ -42,6 +44,9 @@ export async function generateMetadata ({
 
     return {
         title: post.title,
+        alternates: {
+            canonical: `${Metadata.baseUrl}/${postId}`,
+        }
     };
 }
 

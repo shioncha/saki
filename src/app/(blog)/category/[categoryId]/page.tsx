@@ -1,8 +1,10 @@
 export const dynamicParams = false;
-import { getList, getCategoryList } from "@/lib/microcms";
-import PostPreview from "@/components/elements/postPreview";
-import { AiTwotoneFolderOpen } from "react-icons/ai";
 import { MicroCMSQueries} from "microcms-js-sdk";
+import { AiTwotoneFolderOpen } from "react-icons/ai";
+
+import PostPreview from "@/components/elements/postPreview";
+import { getCategoryList,getList } from "@/lib/microcms";
+
 import styles from "./page.module.css"
 
 interface Props {

@@ -3,9 +3,11 @@
     border-radius: 24px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     color: var(--c-text-main);
-    display: block;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    padding: 0 24px 24px 24px;
+    padding: 0 24px 16px 24px;
+    position: relative;
 }
 
 .item:hover {
@@ -15,12 +17,19 @@
 }
 
 .item h1 {
+    flex: 1;
     font-size: 1rem;
-    margin-top: .5rem;
+    margin-top: 1rem;
 }
 
 .item p {
     margin-top: 1.5rem;
+}
+
+.link {
+    inset: 0;
+    position: absolute;
+    z-index: 1;
 }
 
 .info {
@@ -35,10 +44,10 @@
 
 .category {
     background-color: var(--c-text-link);
-    border: 1px solid var(--c-text-link);
     border-radius: 100vh;
     color: var(--c-bg-content);
-    font-size: .9rem;
+    font-size: .75rem;
+    line-height: 1.4;
     margin: 0 0 0 .5rem;
-    padding: 2px 8px 1px;
+    padding: .15rem .5rem .1rem;
 }

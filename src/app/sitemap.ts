@@ -1,7 +1,8 @@
+import { MicroCMSQueries } from 'microcms-js-sdk';
 import { MetadataRoute } from 'next'
+
 import Metadata from '@/const/meta'
 import { getBlogList, getCategoryList } from '@/lib/microcms';
-import { MicroCMSQueries } from 'microcms-js-sdk';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const queries: MicroCMSQueries = {

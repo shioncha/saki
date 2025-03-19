@@ -1,4 +1,5 @@
 import { SiMisskey } from "react-icons/si";
+
 import styles from "./MisskeyShare.module.css";
 
 interface Props {

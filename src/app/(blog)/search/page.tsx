@@ -1,6 +1,18 @@
 import { Suspense } from 'react';
-import styles from './page.module.css';
+
 import SearchFunc from '@/components/elements/search';
+import Metadata from '@/const/meta';
+
+import styles from './page.module.css';
+
+export function metadata() {
+  return {
+    title: 'Search',
+    alternates: {
+      canonical: `${Metadata.baseUrl}/search`,
+    }
+  };
+}
 
 export default function Page() {
   return (

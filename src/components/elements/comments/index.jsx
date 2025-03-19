@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react';
+
 import styles from './Comments.module.css';
 
 export function Comments({ postId }) {
@@ -20,14 +21,13 @@ export function Comments({ postId }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         await fetch(`/api/blog/${postId}/comments`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData),
-    });
+        });
     }
 
     useEffect(() => {

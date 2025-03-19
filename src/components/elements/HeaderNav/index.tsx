@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import { getCategoryList } from '@/lib/microcms'
 
 export async function HeaderNav() {
