@@ -1,8 +1,7 @@
 import Image from "next/image";
+import type { JSX } from "react";
 
 import styles from "./thumbnail.module.css";
-
-import type { JSX } from "react";
 
 interface Props {
     url: string;

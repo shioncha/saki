@@ -1,13 +1,12 @@
 export const dynamicParams = false;
 import { MicroCMSQueries} from "microcms-js-sdk";
+import type { JSX } from "react";
 import { AiTwotoneFolderOpen } from "react-icons/ai";
 
 import PostPreview from "@/components/elements/postPreview";
 import { getCategoryList,getList } from "@/lib/microcms";
 
 import styles from "./page.module.css"
-
-import type { JSX } from "react";
 
 interface Props {
     params: Promise<{

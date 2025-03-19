@@ -7,7 +7,7 @@ const app = new Hono().basePath('/api');
 
 app.get('/blog/search', csrf(), async (c) => {
   const query = c.req.query('q');
-  const queries: Object = {
+  const queries: object = {
     fields: 'id,title,publishedAt',
     filters: 'category[not_equals]page',
     limit: 12,
@@ -16,7 +16,7 @@ app.get('/blog/search', csrf(), async (c) => {
   
   if (!query) return c.json([]);
   
-  const getList = async (queries: Object) => {
+  const getList = async (queries: object) => {
     if (!process.env.MICROCMS_SERVICE_DOMAIN) return c.json([]);
     if (!process.env.MICROCMS_API_KEY) return c.json([]);
     if (!queries) return c.json([]);

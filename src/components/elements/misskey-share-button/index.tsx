@@ -1,8 +1,7 @@
+import type { JSX } from "react";
 import { SiMisskey } from "react-icons/si";
 
 import styles from "./MisskeyShare.module.css";
-
-import type { JSX } from "react";
 
 interface Props {
     url: string;

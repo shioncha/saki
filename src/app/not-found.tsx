@@ -1,4 +1,5 @@
 import { Metadata as NextMetadata } from "next";
+import Link from "next/link";
 
 import { Footer } from "@/components/layouts/footer";
 
@@ -16,7 +17,7 @@ export default function NotFound() {
       <main className={styles.main}>
         <h1>404 Not Found</h1>
         <p>お探しのページは見つかりませんでした。</p>
-        <a href="/">トップページに戻る</a>
+        <Link href="/">トップページに戻る</Link>
       </main>
       <Footer />
     </body>

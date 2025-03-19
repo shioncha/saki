@@ -2,6 +2,7 @@ export const dynamicParams = false;
 import parse from "html-react-parser";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import { notFound } from "next/navigation";
+import type { JSX } from "react";
 
 import { DateFormatter } from "@/components/elements/dateFormatter";
 import { Thumbnail } from "@/components/elements/thumbnail";
@@ -10,8 +11,6 @@ import Metadata from "@/const/meta";
 import { getDetail, getList } from "@/lib/microcms";
 
 import styles from "./page.module.css";
-
-import type { JSX } from "react";
 
 interface Props {
     params: Promise<{

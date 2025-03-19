@@ -1,12 +1,11 @@
 import Link from "next/link";
+import type { JSX } from "react";
 
 import { Thumbnail } from "@/components/elements/thumbnail";
 import { Blog } from "@/lib/microcms";
 
 import { DateFormatter } from "../dateFormatter";
 import styles from "./postPreview.module.css";
-
-import type { JSX } from "react";
 
 interface Props {
     post: Blog;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { JSX } from "react";
 import { FaTwitter } from "react-icons/fa";
 import { SiFeedly,SiRss } from "react-icons/si";
 
@@ -6,8 +7,6 @@ import { Toc } from "@/components/elements/toc";
 import Metadata from "@/const/meta";
 
 import styles from "./aside.module.css";
-
-import type { JSX } from "react";
 
 export function Aside(): JSX.Element {
     const encodedUrl = encodeURIComponent(Metadata.baseUrl);

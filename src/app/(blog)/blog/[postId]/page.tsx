@@ -3,6 +3,7 @@ import parse from "html-react-parser";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { JSX } from "react";
 
 import { Comments } from "@/components/elements/comments";
 import { DateFormatter } from "@/components/elements/dateFormatter";
@@ -13,8 +14,6 @@ import Metadata from "@/const/meta";
 import { getBlogList,getDetail } from "@/lib/microcms";
 
 import styles from "./page.module.css";
-
-import type { JSX } from "react";
 
 interface Props {
     params: Promise<{
