@@ -44,6 +44,9 @@ export async function generateMetadata ({
 
     return {
         title: post.title,
+        alternates: {
+            canonical: `${Metadata.baseUrl}/${postId}`,
+        }
     };
 }
 

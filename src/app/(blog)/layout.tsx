@@ -27,6 +27,7 @@ export const metadata: NextMetadata = {
     creator: Metadata.twitterId,
   },
   alternates: {
+    canonical: Metadata.baseUrl,
     types: {
       'application/rss+xml': '/feed',
     },
@@ -39,12 +40,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <body>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </body>
   );
 }

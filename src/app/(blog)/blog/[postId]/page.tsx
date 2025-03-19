@@ -30,6 +30,9 @@ export async function generateStaticParams() {
     const paths = posts.map((post) => {
         return {
             postId: post.id,
+            alternates: {
+                canonical: `${Metadata.baseUrl}/blog/${post.id}`,
+            }
         };
     });
 
