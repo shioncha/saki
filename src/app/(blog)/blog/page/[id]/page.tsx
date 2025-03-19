@@ -9,9 +9,9 @@ import styles from "./page.module.css";
 
 const PER_PAGE = 12;
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 async function getPageCount(): Promise<number> {
@@ -37,7 +37,13 @@ export async function generateStaticParams() {
   return [...paths];
 }
 
-export default async function StaticPage({ params: { id } }: Props) {
+export default async function StaticPage(props: Props) {
+  const params = await props.params;
+
+  const {
+    id
+  } = params;
+
   const queries: MicroCMSQueries = {
     fields: 'id,title,eyecatch,category,publishedAt',
     filters: 'category[not_equals]page',

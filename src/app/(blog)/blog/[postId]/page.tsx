@@ -14,10 +14,12 @@ import { getBlogList,getDetail } from "@/lib/microcms";
 
 import styles from "./page.module.css";
 
+import type { JSX } from "react";
+
 interface Props {
-    params: {
+    params: Promise<{
         postId: string;
-    }
+    }>
 }
 
 export async function generateStaticParams() {
@@ -39,15 +41,19 @@ export async function generateStaticParams() {
     return [...paths];
 }
 
-export async function generateMetadata ({
-    params: { postId },
-}: Props) {
+export async function generateMetadata(props: Props) {
+    const params = await props.params;
+
+    const {
+        postId
+    } = params;
+
     const post = await getDetail(postId);
 
     if (!post || !post.title) {
         return "Untitled";
     }
-    
+
     const description = post.content.replace(/(<([^>]+)>)/gi, '').slice(0, 100) + '...';
     const images = post.eyecatch.url;
 
@@ -73,9 +79,13 @@ export async function generateMetadata ({
     };
 }
 
-export default async function StaticDetailPage({
-    params: { postId },
-}: Props): Promise<JSX.Element> {
+export default async function StaticDetailPage(props: Props): Promise<JSX.Element> {
+    const params = await props.params;
+
+    const {
+        postId
+    } = params;
+
     const post = await getDetail(postId);
 
     if (!post) {

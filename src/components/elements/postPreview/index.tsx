@@ -6,6 +6,8 @@ import { Blog } from "@/lib/microcms";
 import { DateFormatter } from "../dateFormatter";
 import styles from "./postPreview.module.css";
 
+import type { JSX } from "react";
+
 interface Props {
     post: Blog;
 }

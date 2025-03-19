@@ -7,10 +7,12 @@ import { getCategoryList,getList } from "@/lib/microcms";
 
 import styles from "./page.module.css"
 
+import type { JSX } from "react";
+
 interface Props {
-    params: {
+    params: Promise<{
         categoryId: string;
-    }
+    }>
 }
 
 const getCategoryName = async (categoryId: string): Promise<string> => {
@@ -32,9 +34,13 @@ export async function generateStaticParams() {
     return [...paths];
 }
 
-export async function generateMetadata ({
-    params: {categoryId},
-}: Props) {
+export async function generateMetadata(props: Props) {
+    const params = await props.params;
+
+    const {
+        categoryId
+    } = params;
+
     const name = await getCategoryName(categoryId);
     if (!name) {
         return "Untitled";
@@ -45,16 +51,20 @@ export async function generateMetadata ({
     };
 }
 
-export default async function StaticDetailPage({
-    params: {categoryId},
-}: Props): Promise<JSX.Element> {
+export default async function StaticDetailPage(props: Props): Promise<JSX.Element> {
+    const params = await props.params;
+
+    const {
+        categoryId
+    } = params;
+
     const queries: MicroCMSQueries = {
         fields: 'id,title,eyecatch,category,publishedAt',
         filters: `category[not_equals]page[and]category[equals]${categoryId}`,
         limit: 10,
     }
     const { contents } = await getList(queries);
-    
+
     if (!contents || contents.length === 0) {
         return <h1>No contents</h1>;
     }

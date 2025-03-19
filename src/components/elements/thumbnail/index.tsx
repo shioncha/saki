@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import styles from "./thumbnail.module.css";
 
+import type { JSX } from "react";
+
 interface Props {
     url: string;
     alt: string;

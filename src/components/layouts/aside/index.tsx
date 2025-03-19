@@ -7,6 +7,8 @@ import Metadata from "@/const/meta";
 
 import styles from "./aside.module.css";
 
+import type { JSX } from "react";
+
 export function Aside(): JSX.Element {
     const encodedUrl = encodeURIComponent(Metadata.baseUrl);
     const feedlyUrl = `https://feedly.com/i/subscription/feed%2F${encodedUrl}%2Ffeed`

@@ -1,9 +1,11 @@
-"use client"
+"use client";
 import { FacebookIcon, FacebookShareButton, PocketIcon,PocketShareButton, TwitterIcon, TwitterShareButton } from "react-share"
 
 import { MisskeyShare } from "@/components/elements/misskey-share-button"
 
 import styles from "./share.module.css"
+
+import type { JSX } from "react";
 
 interface Props {
     url: string;
