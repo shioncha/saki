@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { JSX } from "react";
-import { FaTwitter } from "react-icons/fa";
-import { SiFeedly,SiRss } from "react-icons/si";
+import { SiFeedly, SiRss } from "react-icons/si";
 
 import { Toc } from "@/components/elements/toc";
 import Metadata from "@/const/meta";
@@ -37,13 +36,6 @@ export function Aside(): JSX.Element {
                                     <a href={feedlyUrl} target="_blank" rel="noopener noreferrer">
                                         <div className={styles.icon}>
                                             <SiFeedly color="#2BB24C" size={24}/>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={"https://twitter.com/" + Metadata.twitterId} target="_blank" rel="noopener noreferrer">
-                                        <div className={styles.icon}>
-                                            <FaTwitter color="#1DA1F2" size={24} />
                                         </div>
                                     </a>
                                 </li>

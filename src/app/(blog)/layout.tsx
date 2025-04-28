@@ -23,8 +23,6 @@ export const metadata: NextMetadata = {
     card: 'summary_large_image',
     title: Metadata.title,
     description: Metadata.description,
-    site: Metadata.twitterId,
-    creator: Metadata.twitterId,
   },
   alternates: {
     canonical: Metadata.baseUrl,
