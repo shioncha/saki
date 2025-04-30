@@ -26,14 +26,14 @@ export function Aside(): JSX.Element {
                         <div className={styles.content}>
                             <ul className={styles.icons}>
                                 <li>
-                                    <Link href="/feed">
+                                    <Link href="/feed" aria-label="RSSで購読する" target="_blank" rel="noopener noreferrer">
                                         <div className={styles.icon}>
                                             <SiRss color="#FFA500" size={24}/>
                                         </div>
                                     </Link>
                                 </li>
                                 <li>
-                                    <a href={feedlyUrl} target="_blank" rel="noopener noreferrer">
+                                    <a href={feedlyUrl} aria-label="Feedlyで購読する" target="_blank" rel="noopener noreferrer">
                                         <div className={styles.icon}>
                                             <SiFeedly color="#2BB24C" size={24}/>
                                         </div>
