@@ -53,11 +53,14 @@ export function Comments({ postId }) {
                     )
                 })}
             </div>
-            <p>コメントする</p>
+            <p>コメントを残す</p>
             <form className={styles.form} onSubmit={handleSubmit}>
-                <input type="text" name="yourName" placeholder="名前" onChange={handleChange} />
-                <input type="email" name="yourEmail" placeholder="メールアドレス" onChange={handleChange} />
-                <textarea name="comment" placeholder="コメント" onChange={handleChange}/>
+                <label htmlFor="yourName">名前</label>
+                <input type="text" name="yourName" placeholder="通りすがり" onChange={handleChange} required />
+                <label htmlFor="yourEmail">メールアドレス</label>
+                <input type="email" name="yourEmail" placeholder="example@example.com" onChange={handleChange} required />
+                <label htmlFor="comment">コメント</label>
+                <textarea name="comment" placeholder="" onChange={handleChange} required />
                 <button type="submit">送信</button>
             </form>
         </div>
