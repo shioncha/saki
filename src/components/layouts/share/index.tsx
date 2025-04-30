@@ -13,21 +13,19 @@ interface Props {
 
 export function ShareTree({ url, title }: Props): JSX.Element {
     return (
-        <div className={styles.share0}>
+        <div className={styles.container}>
             <div className={styles.share}>
-                <div className={styles.shareInner}>
-                    <div className={styles.buttons}>
-                        <TwitterShareButton url={url} title={title}>
-                            <TwitterIcon size={48} round={true} />
-                        </TwitterShareButton>
-                        <FacebookShareButton url={url}>
-                            <FacebookIcon size={48} round={true} />
-                        </FacebookShareButton>
-                        <PocketShareButton url={url} title={title}>
-                            <PocketIcon size={48} round={true} />
-                        </PocketShareButton>
-                        <MisskeyShare url={url} title={title} />
-                    </div>
+                <div className={styles.buttons}>
+                    <TwitterShareButton url={url} title={title}>
+                        <TwitterIcon size={48} round={true} />
+                    </TwitterShareButton>
+                    <FacebookShareButton url={url}>
+                        <FacebookIcon size={48} round={true} />
+                    </FacebookShareButton>
+                    <PocketShareButton url={url} title={title}>
+                        <PocketIcon size={48} round={true} />
+                    </PocketShareButton>
+                    <MisskeyShare url={url} title={title} />
                 </div>
             </div>
         </div>
