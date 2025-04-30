@@ -5,7 +5,6 @@
   margin: 20px 0 0 0;
   list-style: none;
 }
-
 .item:not(:first-child) {
   margin-left: 16px;
 }
@@ -20,6 +19,7 @@
 }
 
 .isActive {
-  background-color: var(--c-gray-0);
+  background-color: color-mix(in srgb, var(--c-bg-main), #000 10%);
   border-radius: 50%;
+  cursor: default;
 }
