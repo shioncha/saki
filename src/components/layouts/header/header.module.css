@@ -1,8 +1,8 @@
 .header {
     width: 100%;
     background-color: var(--c-bg-content);
-    border-radius: 0 0 min(max(4vw, 30px), 50px) min(max(4vw, 30px), 50px);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 1px 4px #0000001a, 0px 4px 16px #0000001a;
     margin: 0 auto;
 }
 
@@ -35,7 +35,6 @@
     white-space: nowrap;
     width: fit-content;
 }
-
 .header ul::-webkit-scrollbar {
     display: none;
 }
@@ -45,26 +44,14 @@
     margin: .5rem 0 .5rem .2rem;
     position: relative;
 }
-
-.header li a {
-    padding: .2rem .5rem;
-}
-
-.header li a:hover {
-    background-color: #bbb;
-    border-radius: .5rem;
-    color: #fff;
-}
-
 .header li:first-child {
     margin-right: .8rem;
 }
-
 .header li:first-child::after {
     content: "";
     display: inline-block;
     width: 1px;
-    height: 20px;
+    height: 1.5rem;
     background-color: #bbb;
     position: absolute;
     top: 50%;
@@ -72,8 +59,17 @@
     right: -.5rem;
 }
 
+.header li a {
+    padding: 3px 8px;
+    border-radius: 8px;
+}
+.header li a:hover {
+    background-color: #eee;
+}
+
 @media screen and (min-width: 768px) {
     .header {
         width: calc(100% - 14px);
+        border-radius: 0 0 45px 45px;
     }
 }
