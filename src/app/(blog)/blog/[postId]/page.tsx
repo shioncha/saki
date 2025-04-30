@@ -73,7 +73,6 @@ export async function generateMetadata(props: Props) {
             title: post.title,
             description,
             images,
-            site: Metadata.twitterId,
         }
     };
 }
