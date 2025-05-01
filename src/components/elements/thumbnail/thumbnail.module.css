@@ -1,12 +1,12 @@
 .container {
-    position: relative;
-    left: calc(-1 * var(--s-m));
+  position: relative;
+  left: calc(-1 * var(--s-m));
 }
 
 .thumbnail {
-    border-bottom: 1px solid var(--c-gray-0);
-    border-radius: var(--r-m) var(--r-m) 0 0;
-    height: auto;
-    max-width: calc(100% + 48px);
-    object-fit: cover;
+  border-bottom: 1px solid var(--c-gray-0);
+  border-radius: var(--r-m) var(--r-m) 0 0;
+  height: auto;
+  max-width: calc(100% + 48px);
+  object-fit: cover;
 }

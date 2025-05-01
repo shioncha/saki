@@ -1,13 +1,13 @@
 "use client";
 
-import Link from 'next/link';
-import { useRouter,useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { CiSearch } from 'react-icons/ci';
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { CiSearch } from "react-icons/ci";
 
-import { DateFormatter } from '@/components/elements/dateFormatter';
+import { DateFormatter } from "@/components/elements/dateFormatter";
 
-import styles from './SearchFunc.module.css';
+import styles from "./SearchFunc.module.css";
 
 interface Article {
   id: string;
@@ -28,38 +28,52 @@ export default function SearchFunc() {
     const params = new URLSearchParams(searchParams);
     if (!q) {
       setArticles([]);
-      replace('/search');
+      replace("/search");
       return;
     }
-    params.set('q', q);
+    params.set("q", q);
     replace(`/search?${params.toString()}`);
   }
 
   useEffect(() => {
     const search = async () => {
       setLoading(true);
-      const q = searchParams.get('q');
+      const q = searchParams.get("q");
       const res = await fetch(`/api/blog/search?q=${q}`);
       const json = await res.json();
       setArticles(json);
       setLoading(false);
-    }
-    if (searchParams.get('q')) search();
+    };
+    if (searchParams.get("q")) search();
   }, [searchParams]);
 
   return (
     <>
       <form onSubmit={handler} className={styles.searchBox}>
-        <input type="text" name="q" placeholder='Search' defaultValue={searchParams.get('q')?.toString()} className={styles.input} />
-        <button type="submit" className={styles.button}><CiSearch size={24} color='white'/></button>
+        <input
+          type="text"
+          name="q"
+          placeholder="Search"
+          defaultValue={searchParams.get("q")?.toString()}
+          className={styles.input}
+        />
+        <button type="submit" className={styles.button}>
+          <CiSearch size={24} color="white" />
+        </button>
       </form>
-      {loading ? <p>Loading...</p> : (
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
         <div className={styles.articles}>
           {articles.map((article) => {
             const url = `/blog/${article.id}`;
             return (
               <div key={article.id} className={styles.article}>
-                <p><Link href={url} target="_blank">{article.title}</Link></p>
+                <p>
+                  <Link href={url} target="_blank">
+                    {article.title}
+                  </Link>
+                </p>
                 <DateFormatter date={article.publishedAt} />
               </div>
             );

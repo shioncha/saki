@@ -1,53 +1,53 @@
 .item {
-    background-color: var(--c-bg-content);
-    border-radius: var(--r-m);
-    box-shadow: 0 2px 8px #0000001a;
-    color: var(--c-text-main);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 0 24px 16px 24px;
-    position: relative;
-    transition: all 0.3s ease-in-out;
+  background-color: var(--c-bg-content);
+  border-radius: var(--r-m);
+  box-shadow: 0 2px 8px #0000001a;
+  color: var(--c-text-main);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 24px 16px 24px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
 }
 .item:hover {
-    background-color: color-mix(in srgb, var(--c-bg-content), #000 5%);
-    box-shadow: 0 4px 8px #0000001a;
-    transform: translateY(-5px);
+  background-color: color-mix(in srgb, var(--c-bg-content), #000 5%);
+  box-shadow: 0 4px 8px #0000001a;
+  transform: translateY(-5px);
 }
 
 .item h1 {
-    flex: 1;
-    font-size: 1rem;
-    margin-top: 1rem;
+  flex: 1;
+  font-size: 1rem;
+  margin-top: 1rem;
 }
 
 .item p {
-    margin-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .link {
-    inset: 0;
-    position: absolute;
-    z-index: 1;
+  inset: 0;
+  position: absolute;
+  z-index: 1;
 }
 
 .info {
-    display: flex;
-    align-items: center;
-    margin: 1rem 0 0;
+  display: flex;
+  align-items: center;
+  margin: 1rem 0 0;
 }
 
 .date {
-    color: var(--c-text-sub);
+  color: var(--c-text-sub);
 }
 
 .category {
-    background-color: var(--c-text-link);
-    border-radius: 100vh;
-    color: var(--c-bg-content);
-    font-size: .75rem;
-    line-height: 1.4;
-    margin: 0 0 0 .5rem;
-    padding: .15rem .5rem .1rem;
+  background-color: var(--c-text-link);
+  border-radius: 100vh;
+  color: var(--c-bg-content);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin: 0 0 0 0.5rem;
+  padding: 0.15rem 0.5rem 0.1rem;
 }

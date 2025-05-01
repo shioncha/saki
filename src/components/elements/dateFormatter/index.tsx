@@ -7,5 +7,5 @@ dayjs.extend(timezone);
 
 export function DateFormatter({ date }: { date: string | undefined }) {
   if (!date) return null;
-  return <time dateTime={date}>{dayjs(date).format('YYYY.MM.DD')}</time>
+  return <time dateTime={date}>{dayjs(date).format("YYYY.MM.DD")}</time>;
 }

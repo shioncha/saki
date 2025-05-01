@@ -11,8 +11,8 @@ const PER_PAGE = 12;
 
 async function getPageCount(): Promise<number> {
   const queries: MicroCMSQueries = {
-    fields: 'id',
-    filters: 'category[not_equals]page'
+    fields: "id",
+    filters: "category[not_equals]page",
   };
   const posts = await getBlogList(queries);
   const postCount = posts.length;
@@ -32,7 +32,7 @@ export default async function StaticPage() {
     <>
       <div className={styles.container}>
         {contents.map((post) => {
-          return <PostPreview key={post.id} post={post} />
+          return <PostPreview key={post.id} post={post} />;
         })}
       </div>
       <PagenationButton current={1} total={pageCount} />

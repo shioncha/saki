@@ -11,65 +11,66 @@ import { getDetail, getList } from "@/lib/microcms";
 import styles from "./page.module.css";
 
 interface Props {
-    params: Promise<{
-        postId: string;
-    }>
+  params: Promise<{
+    postId: string;
+  }>;
 }
 
 export async function generateStaticParams() {
-    const queries: MicroCMSQueries = {
-        filters: 'category[equals]page',
-        limit: 12,
-    }
-    const { contents } = await getList(queries);
+  const queries: MicroCMSQueries = {
+    filters: "category[equals]page",
+    limit: 12,
+  };
+  const { contents } = await getList(queries);
 
-    const paths = contents.map((post) => {
-        return {
-            postId: post.id,
-        };
-    });
+  const paths = contents.map((post) => {
+    return {
+      postId: post.id,
+    };
+  });
 
-    return [...paths];
+  return [...paths];
 }
 
 export async function generateMetadata(props: Props) {
-    const params = await props.params;
+  const params = await props.params;
 
-    const {
-        postId
-    } = params;
+  const { postId } = params;
 
-    const post = await getDetail(postId);
+  const post = await getDetail(postId);
 
-    if (!post || !post.title) {
-        return "Untitled";
-    }
+  if (!post || !post.title) {
+    return "Untitled";
+  }
 
-    return {
-        title: post.title,
-        alternates: {
-            canonical: `${Metadata.baseUrl}/${postId}`,
-        }
-    };
+  return {
+    title: post.title,
+    alternates: {
+      canonical: `${Metadata.baseUrl}/${postId}`,
+    },
+  };
 }
 
-export default async function StaticDetailPage(props: Props): Promise<JSX.Element> {
-    const params = await props.params;
+export default async function StaticDetailPage(
+  props: Props
+): Promise<JSX.Element> {
+  const params = await props.params;
 
-    const {
-        postId
-    } = params;
+  const { postId } = params;
 
-    const post = await getDetail(postId);
+  const post = await getDetail(postId);
 
-    if (!post) {
-        notFound();
-    }
+  if (!post) {
+    notFound();
+  }
 
-    return (
-        <div className={styles.container}>
-            <ShareTree url={`${Metadata.baseUrl}/${postId}`} title={`${post.title} | ${Metadata.title}`}/>
-            <ArticleComponent post={post} isPageCategory={true} />
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <ShareTree
+        url={`${Metadata.baseUrl}/${postId}`}
+        title={`${post.title} | ${Metadata.title}`}
+      />
+      <ArticleComponent post={post} isPageCategory={true} />
+    </div>
+  );
 }

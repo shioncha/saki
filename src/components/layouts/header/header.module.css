@@ -1,75 +1,75 @@
 .header {
-    width: 100%;
-    background-color: var(--c-bg-content);
-    border-radius: 0 0 30px 30px;
-    box-shadow: 0 1px 4px #0000001a, 0px 4px 16px #0000001a;
-    margin: 0 auto;
+  width: 100%;
+  background-color: var(--c-bg-content);
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 1px 4px #0000001a, 0px 4px 16px #0000001a;
+  margin: 0 auto;
 }
 
 .container {
-    display: flex;
-    padding: 8px 24px 0;
-    margin: 0 auto;
+  display: flex;
+  padding: 8px 24px 0;
+  margin: 0 auto;
 }
 
 .logo {
-    width: calc(100% - 80px);
+  width: calc(100% - 80px);
 }
 
 .header h1 {
-    color: var(--c-text-logo);
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  color: var(--c-text-logo);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .header ul {
-    display: flex;
-    list-style: none;
-    margin: 0 auto;
-    max-width: 96%;
-    overflow-x: scroll;
-    position: relative;
-    white-space: nowrap;
-    width: fit-content;
+  display: flex;
+  list-style: none;
+  margin: 0 auto;
+  max-width: 96%;
+  overflow-x: scroll;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
 }
 .header ul::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .header li {
-    display: inline-flex;
-    margin: .5rem 0 .5rem .2rem;
-    position: relative;
+  display: inline-flex;
+  margin: 0.5rem 0 0.5rem 0.2rem;
+  position: relative;
 }
 .header li:first-child {
-    margin-right: .8rem;
+  margin-right: 0.8rem;
 }
 .header li:first-child::after {
-    content: "";
-    display: inline-block;
-    width: 1px;
-    height: 1.5rem;
-    background-color: #bbb;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: -.5rem;
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1.5rem;
+  background-color: #bbb;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -0.5rem;
 }
 
 .header li a {
-    padding: 3px 8px;
-    border-radius: 8px;
+  padding: 3px 8px;
+  border-radius: 8px;
 }
 .header li a:hover {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 @media screen and (min-width: 768px) {
-    .header {
-        width: calc(100% - 14px);
-        border-radius: 0 0 45px 45px;
-    }
+  .header {
+    width: calc(100% - 14px);
+    border-radius: 0 0 45px 45px;
+  }
 }

@@ -4,7 +4,6 @@ import { CiSearch } from "react-icons/ci";
 import styles from "./HeaderSearchButton.module.css";
 
 export function HeaderSearchButton() {
-
   return (
     <>
       <Link href="/search" className={styles.button}>

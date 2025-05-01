@@ -1,73 +1,73 @@
 .aside {
-    width: 300px;
-    margin: 0 0 0 30px;
+  width: 300px;
+  margin: 0 0 0 30px;
 }
 
 .container {
-    height: 100%;
+  height: 100%;
 }
 
 .sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 50px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
 }
 
 .title {
-    background-image: linear-gradient(130deg, #E6FBD5, #C5F7FD);
-    border-radius: 20.4px;
-    color: #535353;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0;
-    padding: 6px 20.4px;
+  background-image: linear-gradient(130deg, #e6fbd5, #c5f7fd);
+  border-radius: 20.4px;
+  color: #535353;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 6px 20.4px;
 }
 
 .content {
-    padding: 20.4px;
+  padding: 20.4px;
 }
 
 .toc a {
-    color: var(--c-text-main);
+  color: var(--c-text-main);
 }
 
 .toc ol {
-    margin: 0 0 0 1.5rem;
+  margin: 0 0 0 1.5rem;
 }
 
 .follow .content {
-    text-align: center;
+  text-align: center;
 }
 
 .follow ul {
-    margin: 0;
+  margin: 0;
 }
 
 .icons {
-    display: inline-flex;
-    list-style: none;
+  display: inline-flex;
+  list-style: none;
 }
 
 .icons li:not(:first-child) {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .icon {
-    background-color: var(--c-bg-content);
-    border: 1px solid color-mix(in srgb, var(--c-bg-content), #000 20%);
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    padding: 12px;
-    transition: all 0.3s ease-in-out;
+  background-color: var(--c-bg-content);
+  border: 1px solid color-mix(in srgb, var(--c-bg-content), #000 20%);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  transition: all 0.3s ease-in-out;
 }
 .icon:hover {
-    border: 1px solid var(--c-text-logo);
-    box-shadow: 0 4px 8px #0000001a;
+  border: 1px solid var(--c-text-logo);
+  box-shadow: 0 4px 8px #0000001a;
 }
 
 @media screen and (max-width: 768px) {
-    .aside {
-        display: none;
-    }
+  .aside {
+    display: none;
+  }
 }

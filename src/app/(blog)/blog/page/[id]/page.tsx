@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { PagenationButton } from "@/components/elements/pagenationButton";
 import PostPreview from "@/components/elements/postPreview";
-import { getBlogList,getList } from "@/lib/microcms";
+import { getBlogList, getList } from "@/lib/microcms";
 
 import styles from "./page.module.css";
 
@@ -16,8 +16,8 @@ interface Props {
 
 async function getPageCount(): Promise<number> {
   const queries: MicroCMSQueries = {
-    fields: 'id',
-    filters: 'category[not_equals]page'
+    fields: "id",
+    filters: "category[not_equals]page",
   };
   const posts = await getBlogList(queries);
   const postCount = posts.length;
@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 
   const paths = Array.from({ length: pageCount }).map((_, i) => {
     return {
-      id: (i + 1).toString()
+      id: (i + 1).toString(),
     };
   });
 
@@ -40,15 +40,13 @@ export async function generateStaticParams() {
 export default async function StaticPage(props: Props) {
   const params = await props.params;
 
-  const {
-    id
-  } = params;
+  const { id } = params;
 
   const queries: MicroCMSQueries = {
-    fields: 'id,title,eyecatch,category,publishedAt',
-    filters: 'category[not_equals]page',
+    fields: "id,title,eyecatch,category,publishedAt",
+    filters: "category[not_equals]page",
     offset: (Number(id) - 1) * PER_PAGE,
-    limit: PER_PAGE
+    limit: PER_PAGE,
   };
   const { contents } = await getList(queries);
 

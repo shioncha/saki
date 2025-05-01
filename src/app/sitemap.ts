@@ -1,16 +1,16 @@
-import { MicroCMSQueries } from 'microcms-js-sdk';
-import { MetadataRoute } from 'next'
+import { MicroCMSQueries } from "microcms-js-sdk";
+import { MetadataRoute } from "next";
 
-import Metadata from '@/const/meta'
-import { getBlogList, getCategoryList } from '@/lib/microcms';
+import Metadata from "@/const/meta";
+import { getBlogList, getCategoryList } from "@/lib/microcms";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const queries: MicroCMSQueries = {
-    fields: 'id,updatedAt,category',
-  }
+    fields: "id,updatedAt,category",
+  };
   const posts = await getBlogList(queries);
   const urls = posts.map((post) => {
-    if (post.category.id === 'page') {
+    if (post.category.id === "page") {
       return {
         url: `${Metadata.baseUrl}/${post.id}`,
         lastModified: new Date(post.updatedAt),
@@ -26,8 +26,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return {
       url: `${Metadata.baseUrl}/category/${category.id}`,
       lastModified: new Date(),
-    }
-  })
+    };
+  });
 
   return [
     {
@@ -35,6 +35,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     ...urls,
-    ...categoryUrls
-  ]
+    ...categoryUrls,
+  ];
 }
