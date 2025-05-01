@@ -2,16 +2,15 @@
     --c-bg-main: #f5f9fb;
     --c-bg-content: #fff;
     --c-bg-decoration: #f1eff7;
-    --c-bg-hover: #fafafa;
     --c-text-main: #444;
     --c-text-sub: #a0a0a0;
     --c-text-link: #56a0a8;
     --c-text-link-hover: #b1d3d6;
     --c-text-logo: #6cc9d4;
     --c-gray-0: #f1eff7;
-    --c-gray-1: #ddf;
-    --r-main: 24px;
-    --s-space: 24px;
+    --r-m: 24px;
+    --r-s: 12px;
+    --s-m: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,7 +18,6 @@
         --c-bg-main: #333;
         --c-bg-content: #222;
         --c-bg-decoration: #222;
-        --c-bg-hover: #444;
         --c-text-main: #eee;
         --c-text-sub: #a8adad;
         --c-text-link: #6cc9d4;

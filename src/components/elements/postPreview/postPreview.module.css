@@ -1,6 +1,6 @@
 .item {
     background-color: var(--c-bg-content);
-    border-radius: 24px;
+    border-radius: var(--r-m);
     box-shadow: 0 2px 8px #0000001a;
     color: var(--c-text-main);
     display: flex;
@@ -8,11 +8,12 @@
     height: 100%;
     padding: 0 24px 16px 24px;
     position: relative;
+    transition: all 0.3s ease-in-out;
 }
 .item:hover {
-    background-color: var(--c-bg-hover);
-    color: var(--c-text-sub);
-    transition: box-shadow 0.3s ease-in-out;
+    background-color: color-mix(in srgb, var(--c-bg-content), #000 5%);
+    box-shadow: 0 4px 8px #0000001a;
+    transform: translateY(-5px);
 }
 
 .item h1 {
