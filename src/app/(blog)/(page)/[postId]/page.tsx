@@ -1,11 +1,9 @@
 export const dynamicParams = false;
-import parse from "html-react-parser";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import { notFound } from "next/navigation";
 import type { JSX } from "react";
 
-import { DateFormatter } from "@/components/elements/dateFormatter";
-import { Thumbnail } from "@/components/elements/thumbnail";
+import { ArticleComponent } from "@/components/elements/article";
 import { ShareTree } from "@/components/layouts/share";
 import Metadata from "@/const/meta";
 import { getDetail, getList } from "@/lib/microcms";
@@ -69,14 +67,9 @@ export default async function StaticDetailPage(props: Props): Promise<JSX.Elemen
     }
 
     return (
-        <article className={styles.container}>
-            <ShareTree url={`${Metadata.baseUrl}/${postId}`} title={post.title}/>
-            <div className={styles.article}>
-                <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
-                <h1>{post.title}</h1>
-                <div>{parse(post.content)}</div>
-                <p>最終更新：<DateFormatter date={post.publishedAt} /></p>
-            </div>
-        </article>
+        <div className={styles.container}>
+            <ShareTree url={`${Metadata.baseUrl}/${postId}`} title={`${post.title} | ${Metadata.title}`}/>
+            <ArticleComponent post={post} isPageCategory={true} />
+        </div>
     );
 }

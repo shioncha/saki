@@ -1,13 +1,10 @@
 export const dynamicParams = false;
-import parse from "html-react-parser";
 import { MicroCMSQueries } from "microcms-js-sdk";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { JSX } from "react";
 
+import { ArticleComponent } from "@/components/elements/article";
 import { Comments } from "@/components/elements/comments";
-import { DateFormatter } from "@/components/elements/dateFormatter";
-import { Thumbnail } from "@/components/elements/thumbnail";
 import { Aside } from "@/components/layouts/aside";
 import { ShareTree } from "@/components/layouts/share";
 import Metadata from "@/const/meta";
@@ -92,17 +89,9 @@ export default async function StaticDetailPage(props: Props): Promise<JSX.Elemen
 
     return (
         <div className={styles.container}>
-            <ShareTree url={`${Metadata.baseUrl}/blog/${postId}`} title={post.title + ' | ' + Metadata.title}/>
+            <ShareTree url={`${Metadata.baseUrl}/blog/${postId}`} title={`${post.title} | ${Metadata.title}`}/>
             <div className={styles.contents}>
-                <article className={styles.article}>
-                    <Thumbnail url={post.eyecatch.url} alt="アイキャッチ" width={post.eyecatch.width} height={post.eyecatch.height}/>
-                    <div className={styles.info}>
-                        <span className={styles.date}><DateFormatter date={post.publishedAt} /></span>
-                        <span className={styles.category}><Link href={'/category/' + post.category.id}>{post.category.name}</Link></span>
-                    </div>
-                    <h1>{post.title}</h1>
-                    <div className="prose">{parse(post.content)}</div>
-                </article>
+                <ArticleComponent post={post}/>
                 <Comments postId={postId}/>
             </div>
             <Aside />
