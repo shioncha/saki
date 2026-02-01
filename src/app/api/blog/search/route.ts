@@ -1,6 +1,8 @@
 import { Hono } from "hono";
 import { csrf } from "hono/csrf";
 
+import { SearchArticle, SearchResponse } from "@/types/article";
+
 export const runtime = "edge";
 
 const app = new Hono().basePath("/api");
@@ -14,26 +16,28 @@ app.get("/blog/search", csrf(), async (c) => {
     q: query,
   };
 
-  if (!query) return c.json([]);
+  if (!query) return c.json<SearchArticle[]>([]);
 
-  const getList = async (queries: object) => {
-    if (!process.env.MICROCMS_SERVICE_DOMAIN) return c.json([]);
-    if (!process.env.MICROCMS_API_KEY) return c.json([]);
-    if (!queries) return c.json([]);
+  const getList = async (queries: object): Promise<SearchArticle[]> => {
+    if (!process.env.MICROCMS_SERVICE_DOMAIN) return [];
+    if (!process.env.MICROCMS_API_KEY) return [];
+    if (!queries) return [];
 
     const entries: [string, string][] = Object.entries(queries);
     const parsedQueries = `?${entries
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join("&")}`;
     const url = `https://${process.env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/blogs${parsedQueries}`;
-    return await fetch(url, {
+    const res = await fetch(url, {
       headers: {
         "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY,
       },
-    }).then((res) => res.json());
+    });
+    const json = (await res.json()) as SearchResponse;
+    return json.contents;
   };
 
-  const { contents } = await getList(queries);
+  const contents = await getList(queries);
   return c.json(contents);
 });
 
