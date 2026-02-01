@@ -6,20 +6,15 @@ import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 
 import { DateFormatter } from "@/components/elements/dateFormatter";
+import { SearchArticle } from "@/types/article";
 
 import styles from "./SearchFunc.module.css";
-
-interface Article {
-  id: string;
-  title: string;
-  publishedAt: string;
-}
 
 export default function SearchFunc() {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
 
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<SearchArticle[]>([]);
   const [loading, setLoading] = useState(false);
 
   async function handler(event: React.FormEvent<HTMLFormElement>) {
@@ -40,7 +35,7 @@ export default function SearchFunc() {
       setLoading(true);
       const q = searchParams.get("q");
       const res = await fetch(`/api/blog/search?q=${q}`);
-      const json = await res.json();
+      const json = (await res.json()) as SearchArticle[];
       setArticles(json);
       setLoading(false);
     };

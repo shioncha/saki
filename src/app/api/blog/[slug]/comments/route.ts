@@ -1,56 +1,103 @@
+import { getRequestContext } from "@cloudflare/next-on-pages";
 import { D1Database } from "@cloudflare/workers-types";
 import { Hono } from "hono";
 
 export const runtime = "edge";
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace NodeJS {
-    interface ProcessEnv {
-      DB: D1Database;
-    }
+type Bindings = {
+  DB: D1Database;
+  SLACK_WEBHOOK_URL?: string;
+  TURNSTILE_SECRET_KEY: string;
+};
+
+async function verifyTurnstile(token: string, secret: string, ip?: string) {
+  const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+  const formData = new FormData();
+  formData.append("secret", secret);
+  formData.append("response", token);
+  if (ip) {
+    formData.append("remoteip", ip);
   }
+
+  const result = await fetch(url, {
+    body: formData,
+    method: "POST",
+  });
+
+  const outcome = await result.json<{ success: boolean }>();
+  return outcome.success;
 }
 
-const app = new Hono().basePath("/api");
+const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
 
 app.get("/blog/:slug/comments", async (c) => {
   const { slug } = c.req.param();
   try {
-    const { results } = await process.env.DB.prepare(
-      "SELECT yourName, yourEmail, comment, createdDate, createdTime FROM blogComments WHERE postId = ?"
+    const { results } = await c.env.DB.prepare(
+      "SELECT id, yourName, comment, createdAt FROM blogComments WHERE postId = ? ORDER BY createdAt ASC",
     )
       .bind(slug)
       .all();
 
     return c.json(results);
-  } catch {
-    return c.json([]);
+  } catch (e) {
+    console.log("Comment Fetch Error:", e);
+    return c.json([], { status: 500 });
   }
 });
 
 app.post("/blog/:slug/comments", async (c) => {
   const { slug } = c.req.param();
-  const { yourName, yourEmail, comment } = await c.req.json();
-  try {
-    const { success } = await process.env.DB.prepare(
-      "INSERT INTO blogComments (postId, yourName, yourEmail, comment, createdDate, createdTime) VALUES (?, ?, ?, ?, ?, ?)"
-    )
-      .bind(
-        slug,
-        yourName,
-        yourEmail,
-        comment,
-        new Date().toISOString().split("T")[0],
-        new Date().toISOString().split("T")[1].split(".")[0]
-      )
-      .run();
+  const { yourName, yourEmail, comment, token } = await c.req.json();
 
-    return c.json({ id: success });
-  } catch {
-    return c.json({ id: null });
+  if (!yourName || !yourEmail || !comment) {
+    return c.json({ id: null }, { status: 400 });
+  }
+
+  // Verify Turnstile token
+  const secretKey = c.env.TURNSTILE_SECRET_KEY;
+  if (!secretKey) {
+    return c.json({ id: null }, { status: 500 });
+  }
+
+  const ip = c.req.header("CF-Connecting-IP") || undefined;
+  const isValid = await verifyTurnstile(token, secretKey, ip);
+  if (!isValid) {
+    return c.json({ error: "Invalid Captcha" }, { status: 400 });
+  }
+
+  try {
+    const result = await c.env.DB.prepare(
+      "INSERT INTO blogComments (postId, yourName, yourEmail, comment, createdAt) VALUES (?, ?, ?, ?, ?) RETURNING id",
+    )
+      .bind(slug, yourName, yourEmail, comment, new Date().toISOString())
+      .first<{ id: number }>();
+
+    if (c.env.SLACK_WEBHOOK_URL) {
+      const payload = {
+        text: `**新しいコメントが投稿されました**\n記事ID: ${slug}\n名前: ${yourName}\nメールアドレス: ${yourEmail}\nコメント: ${comment}`,
+      };
+
+      c.executionCtx.waitUntil(
+        fetch(c.env.SLACK_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }),
+      );
+    }
+
+    return c.json({ id: result?.id ?? null });
+  } catch (e) {
+    console.log("Comment Insert Error:", e);
+    return c.json({ id: null }, { status: 500 });
   }
 });
 
-export const GET = app.fetch;
-export const POST = app.fetch;
+async function handler(request: Request) {
+  const { env, ctx } = getRequestContext();
+  return app.fetch(request, env, ctx);
+}
+
+export const GET = handler;
+export const POST = handler;

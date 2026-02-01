@@ -13,8 +13,34 @@
   margin: 0;
 }
 
+.comment {
+  border-radius: var(--r-s);
+  margin: var(--s-s) 0 0;
+  padding: var(--s-s);
+  white-space: pre-wrap;
+}
+
 .comment:nth-child(even) {
   background-color: var(--c-bg-main);
+}
+
+.commentInfo {
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: space-between;
+}
+
+.commentName {
+  font-weight: bold;
+}
+
+.commentText {
+  margin: 8px 0 0;
+}
+
+.noComments {
+  color: var(--c-text-sub);
+  margin: 12px 0;
 }
 
 .form {
@@ -47,6 +73,10 @@
   cursor: pointer;
   font-size: 1rem;
   padding: 5px 10px;
+}
+
+.turnstile {
+  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) {
