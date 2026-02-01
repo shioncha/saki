@@ -45,11 +45,11 @@ function CommentList({ comments }: CommentListProps) {
 }
 
 type CommentFormProps = {
-  setComments: (comments: Comment[]) => void;
   postId: string;
+  onCommentSubmitted: () => void;
 };
 
-function CommentForm({ setComments, postId }: CommentFormProps) {
+function CommentForm({ postId, onCommentSubmitted }: CommentFormProps) {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [formData, setFormData] = useState<CommentFormData>({
     yourName: "",
@@ -90,9 +90,7 @@ function CommentForm({ setComments, postId }: CommentFormProps) {
       });
 
       // Refresh comments list
-      const commentsRes = await fetch(`/api/blog/${postId}/comments`);
-      const commentsData = await commentsRes.json();
-      setComments(commentsData as Comment[]);
+      onCommentSubmitted();
     } catch {
       alert("コメントの送信に失敗しました");
     } finally {
@@ -171,7 +169,7 @@ export function Comments({ postId }: CommentsProps) {
       <p className={styles.title}>Comments</p>
       {isLoading ? <p>読み込み中…</p> : <CommentList comments={comments} />}
       <h3>コメントを残す</h3>
-      <CommentForm setComments={setComments} postId={postId} />
+      <CommentForm postId={postId} onCommentSubmitted={fetchComments} />
     </div>
   );
 }
