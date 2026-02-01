@@ -6,6 +6,7 @@ export const runtime = "edge";
 
 type Bindings = {
   DB: D1Database;
+  SLACK_WEBHOOK_URL?: string;
 };
 
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
@@ -40,6 +41,20 @@ app.post("/blog/:slug/comments", async (c) => {
     )
       .bind(slug, yourName, yourEmail, comment, new Date().toISOString())
       .first<{ id: number }>();
+
+    if (c.env.SLACK_WEBHOOK_URL) {
+      const payload = {
+        text: `**新しいコメントが投稿されました**\n記事ID: ${slug}\n名前: ${yourName}\nメールアドレス: ${yourEmail}\nコメント: ${comment}`,
+      };
+
+      c.executionCtx.waitUntil(
+        fetch(c.env.SLACK_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }),
+      );
+    }
 
     return c.json({ id: result?.id ?? null });
   } catch (e) {
