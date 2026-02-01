@@ -7,7 +7,26 @@ export const runtime = "edge";
 type Bindings = {
   DB: D1Database;
   SLACK_WEBHOOK_URL?: string;
+  TURNSTILE_SECRET_KEY: string;
 };
+
+async function verifyTurnstile(token: string, secret: string, ip?: string) {
+  const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+  const formData = new FormData();
+  formData.append("secret", secret);
+  formData.append("response", token);
+  if (ip) {
+    formData.append("remoteip", ip);
+  }
+
+  const result = await fetch(url, {
+    body: formData,
+    method: "POST",
+  });
+
+  const outcome = await result.json<{ success: boolean }>();
+  return outcome.success;
+}
 
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
 
@@ -29,10 +48,22 @@ app.get("/blog/:slug/comments", async (c) => {
 
 app.post("/blog/:slug/comments", async (c) => {
   const { slug } = c.req.param();
-  const { yourName, yourEmail, comment } = await c.req.json();
+  const { yourName, yourEmail, comment, token } = await c.req.json();
 
   if (!yourName || !yourEmail || !comment) {
     return c.json({ id: null }, { status: 400 });
+  }
+
+  // Verify Turnstile token
+  const secretKey = c.env.TURNSTILE_SECRET_KEY;
+  if (!secretKey) {
+    return c.json({ id: null }, { status: 500 });
+  }
+
+  const ip = c.req.header("CF-Connecting-IP") || undefined;
+  const isValid = await verifyTurnstile(token, secretKey, ip);
+  if (!isValid) {
+    return c.json({ error: "Invalid Captcha" }, { status: 400 });
   }
 
   try {

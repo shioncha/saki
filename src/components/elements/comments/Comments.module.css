@@ -75,6 +75,10 @@
   padding: 5px 10px;
 }
 
+.turnstile {
+  margin-bottom: 10px;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     margin: 30px auto 0;

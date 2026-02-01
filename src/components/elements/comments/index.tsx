@@ -1,6 +1,7 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { Turnstile, TurnstileInstance } from "@marsidev/react-turnstile";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 
 import { RelativeTime } from "../RelativeTime";
 import styles from "./Comments.module.css";
@@ -16,6 +17,7 @@ type CommentFormData = {
   yourName: string;
   yourEmail: string;
   comment: string;
+  token: string;
 };
 
 type CommentListProps = {
@@ -51,11 +53,13 @@ type CommentFormProps = {
 
 function CommentForm({ postId, onCommentSubmitted }: CommentFormProps) {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [formData, setFormData] = useState<CommentFormData>({
+  const [formData, setFormData] = useState<Omit<CommentFormData, "token">>({
     yourName: "",
     yourEmail: "",
     comment: "",
   });
+  const [token, setToken] = useState<string>("");
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -68,6 +72,12 @@ function CommentForm({ postId, onCommentSubmitted }: CommentFormProps) {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!token) {
+      alert("認証チェックを行ってください");
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const res = await fetch(`/api/blog/${postId}/comments`, {
@@ -75,7 +85,7 @@ function CommentForm({ postId, onCommentSubmitted }: CommentFormProps) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, token }),
       });
 
       if (!res.ok) {
@@ -88,6 +98,8 @@ function CommentForm({ postId, onCommentSubmitted }: CommentFormProps) {
         yourEmail: "",
         comment: "",
       });
+      setToken("");
+      turnstileRef.current?.reset();
 
       // Refresh comments list
       onCommentSubmitted();
@@ -133,7 +145,16 @@ function CommentForm({ postId, onCommentSubmitted }: CommentFormProps) {
         disabled={isSubmitting}
         required
       />
-      <button type="submit" disabled={isSubmitting}>
+      <Turnstile
+        ref={turnstileRef}
+        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
+        onSuccess={(token) => setToken(token)}
+        options={{
+          size: "flexible",
+        }}
+        className={styles.turnstile}
+      />
+      <button type="submit" disabled={isSubmitting || !token}>
         {isSubmitting ? "送信中…" : "送信"}
       </button>
     </form>
