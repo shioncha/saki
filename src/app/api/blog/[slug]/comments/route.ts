@@ -18,7 +18,7 @@ app.get("/blog/:slug/comments", async (c) => {
   const { slug } = c.req.param();
   try {
     const { results } = await process.env.DB.prepare(
-      "SELECT id, yourName, comment, createdDate, createdTime FROM blogComments WHERE postId = ?",
+      "SELECT id, yourName, comment, createdAt FROM blogComments WHERE postId = ? ORDER BY createdAt ASC",
     )
       .bind(slug)
       .all();
@@ -34,16 +34,9 @@ app.post("/blog/:slug/comments", async (c) => {
   const { yourName, yourEmail, comment } = await c.req.json();
   try {
     const { success } = await process.env.DB.prepare(
-      "INSERT INTO blogComments (postId, yourName, yourEmail, comment, createdDate, createdTime) VALUES (?, ?, ?, ?, ?, ?)",
+      "INSERT INTO blogComments (postId, yourName, yourEmail, comment, createdAt) VALUES (?, ?, ?, ?, ?)",
     )
-      .bind(
-        slug,
-        yourName,
-        yourEmail,
-        comment,
-        new Date().toISOString().split("T")[0],
-        new Date().toISOString().split("T")[1].split(".")[0],
-      )
+      .bind(slug, yourName, yourEmail, comment, new Date().toISOString())
       .run();
 
     return c.json({ id: success });

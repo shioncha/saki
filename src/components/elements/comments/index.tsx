@@ -3,13 +3,13 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 import styles from "./Comments.module.css";
+import { RelativeTime } from "../RelativeTime";
 
 type Comment = {
   id: number;
   yourName: string;
   comment: string;
-  createdDate: string;
-  createdTime: string;
+  createdAt: string;
 };
 
 type CommentFormData = {
@@ -34,7 +34,7 @@ function CommentList({ comments }: CommentListProps) {
           <p>
             {comment.yourName} さん
             <span>
-              {comment.createdDate} {comment.createdTime}
+              <RelativeTime dateString={comment.createdAt} />
             </span>
           </p>
           <p>{comment.comment}</p>
