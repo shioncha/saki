@@ -2,6 +2,7 @@
 
 import { format, formatDistanceToNow, parseISO } from "date-fns";
 import { ja } from "date-fns/locale";
+
 import styles from "./RelativeTime.module.css";
 
 type Props = {

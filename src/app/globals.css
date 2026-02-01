@@ -11,6 +11,7 @@
   --r-m: 24px;
   --r-s: 12px;
   --s-m: 24px;
+  --s-s: 12px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,8 +33,9 @@ body {
   color: var(--c-text-main);
   display: flex;
   flex-direction: column;
-  font-family: "Heletica Neue", Arial, "Hiragino Sans",
-    "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", Meiryo, sans-serif;
+  font-family:
+    "Heletica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "BIZ UDPGothic", Meiryo, sans-serif;
   min-height: 100vh;
 }
 

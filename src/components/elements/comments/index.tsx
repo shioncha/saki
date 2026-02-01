@@ -2,8 +2,8 @@
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
-import styles from "./Comments.module.css";
 import { RelativeTime } from "../RelativeTime";
+import styles from "./Comments.module.css";
 
 type Comment = {
   id: number;
@@ -24,20 +24,20 @@ type CommentListProps = {
 
 function CommentList({ comments }: CommentListProps) {
   if (comments.length === 0) {
-    return <p>まだコメントはありません</p>;
+    return <p className={styles.noComments}>まだコメントはありません</p>;
   }
 
   return (
     <div className={styles.comments}>
       {comments.map((comment) => (
         <div key={comment.id} className={styles.comment}>
-          <p>
-            {comment.yourName} さん
+          <div className={styles.commentInfo}>
+            <span className={styles.commentName}>{comment.yourName}</span>
             <span>
               <RelativeTime dateString={comment.createdAt} />
             </span>
-          </p>
-          <p>{comment.comment}</p>
+          </div>
+          <p className={styles.commentText}>{comment.comment}</p>
         </div>
       ))}
     </div>
@@ -92,7 +92,7 @@ function CommentForm({ setComments, postId }: CommentFormProps) {
       // Refresh comments list
       const commentsRes = await fetch(`/api/blog/${postId}/comments`);
       const commentsData = await commentsRes.json();
-      setComments(commentsData);
+      setComments(commentsData as Comment[]);
     } catch {
       alert("コメントの送信に失敗しました");
     } finally {
@@ -154,7 +154,7 @@ export function Comments({ postId }: CommentsProps) {
     try {
       const res = await fetch(`/api/blog/${postId}/comments`);
       const data = await res.json();
-      setComments(data);
+      setComments(data as Comment[]);
     } catch {
       console.error("コメントの取得に失敗しました");
     } finally {
