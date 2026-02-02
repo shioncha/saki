@@ -1,6 +1,6 @@
 import { MicroCMSQueries } from "microcms-js-sdk";
 
-import { PagenationButton } from "@/components/elements/pagenationButton";
+import { PaginationButton } from "@/components/elements/paginationButton";
 import PostPreview from "@/components/elements/postPreview";
 import { getList } from "@/lib/microcms";
 import { getBlogList } from "@/lib/microcms";
@@ -35,7 +35,7 @@ export default async function StaticPage() {
           return <PostPreview key={post.id} post={post} />;
         })}
       </div>
-      <PagenationButton current={1} total={pageCount} />
+      <PaginationButton current={1} total={pageCount} />
     </>
   );
 }

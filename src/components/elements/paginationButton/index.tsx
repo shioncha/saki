@@ -7,7 +7,7 @@ interface Props {
   total: number;
 }
 
-export function PagenationButton({ current, total }: Props) {
+export function PaginationButton({ current, total }: Props) {
   return (
     <ul className={styles.list}>
       {Array.from({ length: total }).map((_, i) => {
