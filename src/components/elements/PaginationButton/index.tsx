@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import styles from "./styles.module.css";
+import styles from "./PaginationButton.module.css";
 
 interface Props {
   current: number;

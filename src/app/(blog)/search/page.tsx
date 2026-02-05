@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import SearchFunc from "@/components/elements/search";
+import Search from "@/components/elements/Search";
 import Metadata from "@/const/meta";
 
 import styles from "./page.module.css";
@@ -22,7 +22,7 @@ export default function Page() {
         記事の内容から全文検索ができます。検索結果はヒットした記事のうち、最新の12件まで表示されます。
       </p>
       <Suspense>
-        <SearchFunc />
+        <Search />
       </Suspense>
     </div>
   );

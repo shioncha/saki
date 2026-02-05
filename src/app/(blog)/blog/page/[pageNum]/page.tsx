@@ -1,8 +1,8 @@
 import { MicroCMSQueries } from "microcms-js-sdk";
 import { notFound } from "next/navigation";
 
-import { PaginationButton } from "@/components/elements/paginationButton";
-import PostPreview from "@/components/elements/postPreview";
+import ArticleCard from "@/components/elements/ArticleCard";
+import { PaginationButton } from "@/components/elements/PaginationButton";
 import { getBlogList, getList } from "@/lib/microcms";
 
 import styles from "./page.module.css";
@@ -60,7 +60,7 @@ export default async function StaticPage(props: Props) {
     <>
       <div className={styles.container}>
         {contents.map((post) => {
-          return <PostPreview key={post.id} post={post} />;
+          return <ArticleCard key={post.id} post={post} />;
         })}
       </div>
       <PaginationButton current={Number(id)} total={Number(pageCount)} />

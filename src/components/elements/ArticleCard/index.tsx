@@ -1,17 +1,17 @@
 import Link from "next/link";
 import type { JSX } from "react";
 
-import { DateFormatter } from "@/components/elements/dateFormatter";
-import { Thumbnail } from "@/components/elements/thumbnail";
+import { DateFormatter } from "@/components/elements/DateFormatter";
+import { Thumbnail } from "@/components/elements/Thumbnail";
 import { Blog } from "@/lib/microcms";
 
-import styles from "./postPreview.module.css";
+import styles from "./ArticleCard.module.css";
 
 interface Props {
   post: Blog;
 }
 
-export default function PostPreview({ post }: Props): JSX.Element {
+export default function ArticleCard({ post }: Props): JSX.Element {
   return (
     <article key={post.id} className={styles.item}>
       <Link href={`/blog/${post.id}`} className={styles.link}></Link>

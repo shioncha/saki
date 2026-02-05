@@ -5,12 +5,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 
-import { DateFormatter } from "@/components/elements/dateFormatter";
+import { DateFormatter } from "@/components/elements/DateFormatter";
 import { SearchArticle } from "@/types/article";
 
-import styles from "./SearchFunc.module.css";
+import styles from "./Search.module.css";
 
-export default function SearchFunc() {
+export default function Search() {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
 

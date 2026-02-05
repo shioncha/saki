@@ -2,18 +2,18 @@ import parse from "html-react-parser";
 import Link from "next/link";
 import { JSX } from "react";
 
-import { DateFormatter } from "@/components/elements/dateFormatter";
-import { Thumbnail } from "@/components/elements/thumbnail";
+import { DateFormatter } from "@/components/elements/DateFormatter";
+import { Thumbnail } from "@/components/elements/Thumbnail";
 import { Blog } from "@/lib/microcms";
 
-import styles from "./index.module.css";
+import styles from "./ArticleDetail.module.css";
 
 interface Props {
   post: Blog;
   isPageCategory?: boolean;
 }
 
-export function ArticleComponent({ post, isPageCategory }: Props): JSX.Element {
+export function ArticleDetail({ post, isPageCategory }: Props): JSX.Element {
   return (
     <article className={styles.article}>
       <Thumbnail

@@ -3,7 +3,7 @@ import { MicroCMSQueries } from "microcms-js-sdk";
 import { notFound } from "next/navigation";
 import type { JSX } from "react";
 
-import { ArticleComponent } from "@/components/elements/article";
+import { ArticleDetail } from "@/components/elements/ArticleDetail";
 import { ShareTree } from "@/components/layouts/share";
 import Metadata from "@/const/meta";
 import { getDetail, getList } from "@/lib/microcms";
@@ -52,7 +52,7 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function StaticDetailPage(
-  props: Props
+  props: Props,
 ): Promise<JSX.Element> {
   const params = await props.params;
 
@@ -70,7 +70,7 @@ export default async function StaticDetailPage(
         url={`${Metadata.baseUrl}/${postId}`}
         title={`${post.title} | ${Metadata.title}`}
       />
-      <ArticleComponent post={post} isPageCategory={true} />
+      <ArticleDetail post={post} isPageCategory={true} />
     </div>
   );
 }
