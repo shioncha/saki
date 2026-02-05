@@ -3,7 +3,7 @@ import { MicroCMSQueries } from "microcms-js-sdk";
 import type { JSX } from "react";
 import { AiTwotoneFolderOpen } from "react-icons/ai";
 
-import PostPreview from "@/components/elements/postPreview";
+import ArticleCard from "@/components/elements/ArticleCard";
 import { getCategoryList, getList } from "@/lib/microcms";
 
 import styles from "./page.module.css";
@@ -49,7 +49,7 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function StaticDetailPage(
-  props: Props
+  props: Props,
 ): Promise<JSX.Element> {
   const params = await props.params;
 
@@ -78,7 +78,7 @@ export default async function StaticDetailPage(
       </div>
       <div className={styles.container}>
         {contents.map((post) => {
-          return <PostPreview key={post.id} post={post} />;
+          return <ArticleCard key={post.id} post={post} />;
         })}
       </div>
     </>

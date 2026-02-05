@@ -3,10 +3,10 @@ import { MicroCMSQueries } from "microcms-js-sdk";
 import { notFound } from "next/navigation";
 import type { JSX } from "react";
 
-import { ArticleComponent } from "@/components/elements/article";
-import { Comments } from "@/components/elements/comments";
-import { Aside } from "@/components/layouts/aside";
-import { ShareTree } from "@/components/layouts/share";
+import { ArticleDetail } from "@/components/elements/ArticleDetail";
+import { Comments } from "@/components/elements/Comments";
+import { ArticleNavigation } from "@/components/layouts/ArticleNavigation";
+import { ShareActions } from "@/components/layouts/ShareActions";
 import Metadata from "@/const/meta";
 import { getBlogList, getDetail } from "@/lib/microcms";
 
@@ -74,7 +74,7 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function StaticDetailPage(
-  props: Props
+  props: Props,
 ): Promise<JSX.Element> {
   const params = await props.params;
 
@@ -88,15 +88,15 @@ export default async function StaticDetailPage(
 
   return (
     <div className={styles.container}>
-      <ShareTree
+      <ShareActions
         url={`${Metadata.baseUrl}/blog/${postId}`}
         title={`${post.title} | ${Metadata.title}`}
       />
       <div className={styles.contents}>
-        <ArticleComponent post={post} />
+        <ArticleDetail post={post} />
         <Comments postId={postId} />
       </div>
-      <Aside />
+      <ArticleNavigation />
     </div>
   );
 }

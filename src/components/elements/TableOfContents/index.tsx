@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import tocbot from "tocbot";
 
-export const Toc = () => {
+export const TableOfContents = () => {
   useEffect(() => {
     tocbot.init({
       // 目次を表示させたいところのクラス名

@@ -1,7 +1,7 @@
 import { Metadata as NextMetadata } from "next";
 import Link from "next/link";
 
-import { Footer } from "@/components/layouts/footer";
+import { Footer } from "@/components/layouts/Footer";
 
 import styles from "./not-found.module.css";
 

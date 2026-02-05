@@ -1,7 +1,7 @@
 import { MicroCMSQueries } from "microcms-js-sdk";
 
-import { PagenationButton } from "@/components/elements/pagenationButton";
-import PostPreview from "@/components/elements/postPreview";
+import ArticleCard from "@/components/elements/ArticleCard";
+import { PaginationButton } from "@/components/elements/PaginationButton";
 import { getList } from "@/lib/microcms";
 import { getBlogList } from "@/lib/microcms";
 
@@ -32,10 +32,10 @@ export default async function StaticPage() {
     <>
       <div className={styles.container}>
         {contents.map((post) => {
-          return <PostPreview key={post.id} post={post} />;
+          return <ArticleCard key={post.id} post={post} />;
         })}
       </div>
-      <PagenationButton current={1} total={pageCount} />
+      <PaginationButton current={1} total={pageCount} />
     </>
   );
 }

@@ -30,13 +30,13 @@ async function verifyTurnstile(token: string, secret: string, ip?: string) {
 
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
 
-app.get("/blog/:slug/comments", async (c) => {
-  const { slug } = c.req.param();
+app.get("/blog/:postId/comments", async (c) => {
+  const { postId } = c.req.param();
   try {
     const { results } = await c.env.DB.prepare(
       "SELECT id, yourName, comment, createdAt FROM blogComments WHERE postId = ? ORDER BY createdAt ASC",
     )
-      .bind(slug)
+      .bind(postId)
       .all();
 
     return c.json(results);
@@ -46,8 +46,8 @@ app.get("/blog/:slug/comments", async (c) => {
   }
 });
 
-app.post("/blog/:slug/comments", async (c) => {
-  const { slug } = c.req.param();
+app.post("/blog/:postId/comments", async (c) => {
+  const { postId } = c.req.param();
   const { yourName, yourEmail, comment, token } = await c.req.json();
 
   if (!yourName || !yourEmail || !comment) {
@@ -70,12 +70,12 @@ app.post("/blog/:slug/comments", async (c) => {
     const result = await c.env.DB.prepare(
       "INSERT INTO blogComments (postId, yourName, yourEmail, comment, createdAt) VALUES (?, ?, ?, ?, ?) RETURNING id",
     )
-      .bind(slug, yourName, yourEmail, comment, new Date().toISOString())
+      .bind(postId, yourName, yourEmail, comment, new Date().toISOString())
       .first<{ id: number }>();
 
     if (c.env.SLACK_WEBHOOK_URL) {
       const payload = {
-        text: `**新しいコメントが投稿されました**\n記事ID: ${slug}\n名前: ${yourName}\nメールアドレス: ${yourEmail}\nコメント: ${comment}`,
+        text: `**新しいコメントが投稿されました**\n記事ID: ${postId}\n名前: ${yourName}\nメールアドレス: ${yourEmail}\nコメント: ${comment}`,
       };
 
       c.executionCtx.waitUntil(
