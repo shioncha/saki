@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import type { JSX } from "react";
 
 import { ArticleDetail } from "@/components/elements/ArticleDetail";
-import { ShareTree } from "@/components/layouts/share";
+import { ShareActions } from "@/components/layouts/ShareActions";
 import Metadata from "@/const/meta";
 import { getDetail, getList } from "@/lib/microcms";
 
@@ -66,7 +66,7 @@ export default async function StaticDetailPage(
 
   return (
     <div className={styles.container}>
-      <ShareTree
+      <ShareActions
         url={`${Metadata.baseUrl}/${postId}`}
         title={`${post.title} | ${Metadata.title}`}
       />

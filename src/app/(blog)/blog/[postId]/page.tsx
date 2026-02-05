@@ -5,8 +5,8 @@ import type { JSX } from "react";
 
 import { ArticleDetail } from "@/components/elements/ArticleDetail";
 import { Comments } from "@/components/elements/Comments";
-import { Aside } from "@/components/layouts/aside";
-import { ShareTree } from "@/components/layouts/share";
+import { ArticleNavigation } from "@/components/layouts/ArticleNavigation";
+import { ShareActions } from "@/components/layouts/ShareActions";
 import Metadata from "@/const/meta";
 import { getBlogList, getDetail } from "@/lib/microcms";
 
@@ -88,7 +88,7 @@ export default async function StaticDetailPage(
 
   return (
     <div className={styles.container}>
-      <ShareTree
+      <ShareActions
         url={`${Metadata.baseUrl}/blog/${postId}`}
         title={`${post.title} | ${Metadata.title}`}
       />
@@ -96,7 +96,7 @@ export default async function StaticDetailPage(
         <ArticleDetail post={post} />
         <Comments postId={postId} />
       </div>
-      <Aside />
+      <ArticleNavigation />
     </div>
   );
 }

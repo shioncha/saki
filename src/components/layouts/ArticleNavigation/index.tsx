@@ -5,9 +5,9 @@ import { SiFeedly, SiRss } from "react-icons/si";
 import { TableOfContents } from "@/components/elements/TableOfContents";
 import Metadata from "@/const/meta";
 
-import styles from "./aside.module.css";
+import styles from "./ArticleNavigation.module.css";
 
-export function Aside(): JSX.Element {
+export function ArticleNavigation(): JSX.Element {
   const encodedUrl = encodeURIComponent(Metadata.baseUrl);
   const feedlyUrl = `https://feedly.com/i/subscription/feed%2F${encodedUrl}%2Ffeed`;
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Metadata from "@/const/meta";
 import { getList } from "@/lib/microcms";
 
-import styles from "./footer.module.css";
+import styles from "./Footer.module.css";
 
 export async function Footer() {
   const queries: MicroCMSQueries = {
