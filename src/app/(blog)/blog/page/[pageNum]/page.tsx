@@ -10,7 +10,7 @@ import styles from "./page.module.css";
 const PER_PAGE = 12;
 interface Props {
   params: Promise<{
-    id: string;
+    pageNum: string;
   }>;
 }
 
@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 
   const paths = Array.from({ length: pageCount }).map((_, i) => {
     return {
-      id: (i + 1).toString(),
+      pageNum: (i + 1).toString(),
     };
   });
 
@@ -40,12 +40,12 @@ export async function generateStaticParams() {
 export default async function StaticPage(props: Props) {
   const params = await props.params;
 
-  const { id } = params;
+  const { pageNum } = params;
 
   const queries: MicroCMSQueries = {
     fields: "id,title,eyecatch,category,publishedAt",
     filters: "category[not_equals]page",
-    offset: (Number(id) - 1) * PER_PAGE,
+    offset: (Number(pageNum) - 1) * PER_PAGE,
     limit: PER_PAGE,
   };
   const { contents } = await getList(queries);
@@ -63,7 +63,7 @@ export default async function StaticPage(props: Props) {
           return <ArticleCard key={post.id} post={post} />;
         })}
       </div>
-      <PaginationButton current={Number(id)} total={Number(pageCount)} />
+      <PaginationButton current={Number(pageNum)} total={Number(pageCount)} />
     </>
   );
 }
