@@ -2,7 +2,7 @@ import { MicroCMSQueries } from "microcms-js-sdk";
 import Link from "next/link";
 
 import Metadata from "@/const/meta";
-import { getList } from "@/lib/microcms";
+import { getArticleList } from "@/lib/microcms";
 
 import styles from "./Footer.module.css";
 
@@ -11,7 +11,7 @@ export async function Footer() {
     filters: "category[equals]page",
     limit: 12,
   };
-  const { contents } = await getList(queries);
+  const { contents } = await getArticleList(queries);
   return (
     <footer className={styles.footer}>
       <div className={styles.navigation}>

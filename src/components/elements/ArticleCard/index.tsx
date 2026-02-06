@@ -3,12 +3,12 @@ import type { JSX } from "react";
 
 import { DateFormatter } from "@/components/elements/DateFormatter";
 import { Thumbnail } from "@/components/elements/Thumbnail";
-import { Blog } from "@/lib/microcms";
+import { Article } from "@/types/article";
 
 import styles from "./ArticleCard.module.css";
 
 interface Props {
-  post: Blog;
+  post: Article;
 }
 
 export default function ArticleCard({ post }: Props): JSX.Element {

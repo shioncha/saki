@@ -8,14 +8,12 @@ import { Comments } from "@/components/elements/Comments";
 import { ArticleNavigation } from "@/components/layouts/ArticleNavigation";
 import { ShareActions } from "@/components/layouts/ShareActions";
 import Metadata from "@/const/meta";
-import { getBlogList, getDetail } from "@/lib/microcms";
+import { getArticleDetail, getArticleListAll } from "@/lib/microcms";
 
 import styles from "./page.module.css";
 
 interface Props {
-  params: Promise<{
-    postId: string;
-  }>;
+  params: Promise<{ postId: string }>;
 }
 
 export async function generateStaticParams() {
@@ -23,7 +21,7 @@ export async function generateStaticParams() {
     fields: "id",
     filters: "category[not_equals]page",
   };
-  const posts = await getBlogList(queries);
+  const posts = await getArticleListAll(queries);
 
   const paths = posts.map((post) => {
     return {
@@ -42,7 +40,7 @@ export async function generateMetadata(props: Props) {
 
   const { postId } = params;
 
-  const post = await getDetail(postId);
+  const post = await getArticleDetail(postId);
 
   if (!post || !post.title) {
     return "Untitled";
@@ -80,7 +78,7 @@ export default async function StaticDetailPage(
 
   const { postId } = params;
 
-  const post = await getDetail(postId);
+  const post = await getArticleDetail(postId);
 
   if (!post) {
     notFound();

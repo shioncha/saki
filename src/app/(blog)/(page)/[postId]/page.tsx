@@ -6,14 +6,12 @@ import type { JSX } from "react";
 import { ArticleDetail } from "@/components/elements/ArticleDetail";
 import { ShareActions } from "@/components/layouts/ShareActions";
 import Metadata from "@/const/meta";
-import { getDetail, getList } from "@/lib/microcms";
+import { getArticleDetail, getArticleList } from "@/lib/microcms";
 
 import styles from "./page.module.css";
 
 interface Props {
-  params: Promise<{
-    postId: string;
-  }>;
+  params: Promise<{ postId: string }>;
 }
 
 export async function generateStaticParams() {
@@ -21,7 +19,7 @@ export async function generateStaticParams() {
     filters: "category[equals]page",
     limit: 12,
   };
-  const { contents } = await getList(queries);
+  const { contents } = await getArticleList(queries);
 
   const paths = contents.map((post) => {
     return {
@@ -37,7 +35,7 @@ export async function generateMetadata(props: Props) {
 
   const { postId } = params;
 
-  const post = await getDetail(postId);
+  const post = await getArticleDetail(postId);
 
   if (!post || !post.title) {
     return "Untitled";
@@ -58,7 +56,7 @@ export default async function StaticDetailPage(
 
   const { postId } = params;
 
-  const post = await getDetail(postId);
+  const post = await getArticleDetail(postId);
 
   if (!post) {
     notFound();

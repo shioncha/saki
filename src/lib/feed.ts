@@ -2,7 +2,7 @@ import { Feed } from "feed";
 import { MicroCMSQueries } from "microcms-js-sdk";
 
 import Metadata from "@/const/meta";
-import { getBlogList } from "@/lib/microcms";
+import { getArticleListAll } from "@/lib/microcms";
 
 export const generateRssFeed = async (): Promise<string> => {
   // フィードを生成
@@ -17,11 +17,11 @@ export const generateRssFeed = async (): Promise<string> => {
   });
 
   // 記事の一覧を取得
-  const quieries: MicroCMSQueries = {
+  const queries: MicroCMSQueries = {
     fields: "id,title,content,eyecatch,createdAt,publishedAt",
     filters: "category[not_equals]page",
   };
-  const posts = await getBlogList(quieries);
+  const posts = await getArticleListAll(queries);
 
   // 記事をフィードに追加
   posts.map((post) => {

@@ -2,13 +2,13 @@ import { MicroCMSQueries } from "microcms-js-sdk";
 import { MetadataRoute } from "next";
 
 import Metadata from "@/const/meta";
-import { getBlogList, getCategoryList } from "@/lib/microcms";
+import { getArticleListAll, getCategoryList } from "@/lib/microcms";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const queries: MicroCMSQueries = {
     fields: "id,updatedAt,category",
   };
-  const posts = await getBlogList(queries);
+  const posts = await getArticleListAll(queries);
   const urls = posts.map((post) => {
     if (post.category.id === "page") {
       return {

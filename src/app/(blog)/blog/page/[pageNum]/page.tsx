@@ -3,15 +3,13 @@ import { notFound } from "next/navigation";
 
 import ArticleCard from "@/components/elements/ArticleCard";
 import { PaginationButton } from "@/components/elements/PaginationButton";
-import { getBlogList, getList } from "@/lib/microcms";
+import { getArticleList, getArticleListAll } from "@/lib/microcms";
 
 import styles from "./page.module.css";
 
 const PER_PAGE = 12;
 interface Props {
-  params: Promise<{
-    pageNum: string;
-  }>;
+  params: Promise<{ pageNum: string }>;
 }
 
 async function getPageCount(): Promise<number> {
@@ -19,7 +17,7 @@ async function getPageCount(): Promise<number> {
     fields: "id",
     filters: "category[not_equals]page",
   };
-  const posts = await getBlogList(queries);
+  const posts = await getArticleListAll(queries);
   const postCount = posts.length;
   const pageCount = Math.ceil(postCount / PER_PAGE);
   return pageCount;
@@ -48,7 +46,7 @@ export default async function StaticPage(props: Props) {
     offset: (Number(pageNum) - 1) * PER_PAGE,
     limit: PER_PAGE,
   };
-  const { contents } = await getList(queries);
+  const { contents } = await getArticleList(queries);
 
   const pageCount = await getPageCount();
 
