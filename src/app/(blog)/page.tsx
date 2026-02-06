@@ -2,8 +2,7 @@ import { MicroCMSQueries } from "microcms-js-sdk";
 
 import ArticleCard from "@/components/elements/ArticleCard";
 import { PaginationButton } from "@/components/elements/PaginationButton";
-import { getList } from "@/lib/microcms";
-import { getBlogList } from "@/lib/microcms";
+import { getArticleList, getArticleListAll } from "@/lib/microcms";
 
 import styles from "./page.module.css";
 
@@ -14,14 +13,14 @@ async function getPageCount(): Promise<number> {
     fields: "id",
     filters: "category[not_equals]page",
   };
-  const posts = await getBlogList(queries);
+  const posts = await getArticleListAll(queries);
   const postCount = posts.length;
   const pageCount = Math.ceil(postCount / PER_PAGE);
   return pageCount;
 }
 
 export default async function StaticPage() {
-  const { contents } = await getList();
+  const { contents } = await getArticleList();
   const pageCount = await getPageCount();
 
   if (!contents || contents.length === 0) {

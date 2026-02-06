@@ -4,14 +4,12 @@ import type { JSX } from "react";
 import { AiTwotoneFolderOpen } from "react-icons/ai";
 
 import ArticleCard from "@/components/elements/ArticleCard";
-import { getCategoryList, getList } from "@/lib/microcms";
+import { getArticleList, getCategoryList } from "@/lib/microcms";
 
 import styles from "./page.module.css";
 
 interface Props {
-  params: Promise<{
-    categoryId: string;
-  }>;
+  params: Promise<{ categoryId: string }>;
 }
 
 const getCategoryName = async (categoryId: string): Promise<string> => {
@@ -60,7 +58,7 @@ export default async function StaticDetailPage(
     filters: `category[not_equals]page[and]category[equals]${categoryId}`,
     limit: 10,
   };
-  const { contents } = await getList(queries);
+  const { contents } = await getArticleList(queries);
 
   if (!contents || contents.length === 0) {
     return <h1>No contents</h1>;

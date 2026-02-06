@@ -4,12 +4,12 @@ import { JSX } from "react";
 
 import { DateFormatter } from "@/components/elements/DateFormatter";
 import { Thumbnail } from "@/components/elements/Thumbnail";
-import { Blog } from "@/lib/microcms";
+import { Article } from "@/types/article";
 
 import styles from "./ArticleDetail.module.css";
 
 interface Props {
-  post: Blog;
+  post: Article;
   isPageCategory?: boolean;
 }
 
