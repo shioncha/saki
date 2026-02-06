@@ -1,19 +1,41 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { getCategoryList } from "@/lib/microcms";
+import { Category } from "@/types/article";
 
-export async function HeaderNav() {
-  const { contents } = await getCategoryList();
+import styles from "./HeaderNav.module.css";
+
+type HeaderNavProps = {
+  categories: Category[];
+};
+
+export function HeaderNav({ categories }: HeaderNavProps) {
+  const pathname = usePathname();
 
   return (
-    <ul>
-      <li>
-        <Link href="/">Home</Link>
+    <ul className={styles.nav}>
+      <li className={styles.navItem}>
+        <Link
+          href="/"
+          className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
+        >
+          Home
+        </Link>
       </li>
-      {contents.map((content) => {
+      {categories.map((category) => {
+        const href = `/category/${category.id}`;
+        const isActive = pathname === href;
+
         return (
-          <li key={content.id}>
-            <Link href={`/category/${content.id}`}>{content.name}</Link>
+          <li key={category.id} className={styles.navItem}>
+            <Link
+              href={`/category/${category.id}`}
+              className={`${styles.link} ${isActive ? styles.active : ""}`}
+            >
+              {category.name}
+            </Link>
           </li>
         );
       })}
